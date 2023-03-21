@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B83944F429C84C0100466E1B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83944F329C84C0000466E1B /* Error.swift */; };
+		B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83944F529C84C1E00466E1B /* WebFetcher.swift */; };
 		B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571E929C0688D008D6BC2 /* uosF12App.swift */; };
 		B84571EC29C0688D008D6BC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571EB29C0688D008D6BC2 /* ContentView.swift */; };
 		B84571EE29C0688E008D6BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84571ED29C0688E008D6BC2 /* Assets.xcassets */; };
@@ -14,6 +16,16 @@
 		B84571FB29C0688E008D6BC2 /* uosF12Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571FA29C0688E008D6BC2 /* uosF12Tests.swift */; };
 		B845720529C0688E008D6BC2 /* uosF12UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845720429C0688E008D6BC2 /* uosF12UITests.swift */; };
 		B845720729C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845720629C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift */; };
+		B845721629C068E6008D6BC2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B845721529C068E6008D6BC2 /* SwiftSoup */; };
+		B845721829C070E6008D6BC2 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845721729C070E6008D6BC2 /* WebView.swift */; };
+		B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8493D1929C44FE100CB772C /* ModelData.swift */; };
+		B86E770F29C8B78400E3F92E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E770E29C8B78400E3F92E /* Login.swift */; };
+		B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E771029C8B80E00E3F92E /* PortalID.swift */; };
+		B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B893C9BD29C9EF2300FAB5B2 /* SubjectView.swift */; };
+		B893C9C029C9F69A00FAB5B2 /* SubjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B893C9BF29C9F69A00FAB5B2 /* SubjectList.swift */; };
+		B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759C829C6FB8F0002FBCA /* ScoreReport.swift */; };
+		B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CA29C6FC280002FBCA /* WiseParser.swift */; };
+		B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CC29C6FD5C0002FBCA /* URLFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B83944F329C84C0000466E1B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		B83944F529C84C1E00466E1B /* WebFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFetcher.swift; sourceTree = "<group>"; };
 		B84571E629C0688D008D6BC2 /* uosF12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uosF12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84571E929C0688D008D6BC2 /* uosF12App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uosF12App.swift; sourceTree = "<group>"; };
 		B84571EB29C0688D008D6BC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +58,16 @@
 		B845720029C0688E008D6BC2 /* uosF12UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uosF12UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B845720429C0688E008D6BC2 /* uosF12UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uosF12UITests.swift; sourceTree = "<group>"; };
 		B845720629C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uosF12UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B845721329C068D1008D6BC2 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B845721729C070E6008D6BC2 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		B8493D1929C44FE100CB772C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		B86E770E29C8B78400E3F92E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		B86E771029C8B80E00E3F92E /* PortalID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalID.swift; sourceTree = "<group>"; };
+		B893C9BD29C9EF2300FAB5B2 /* SubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectView.swift; sourceTree = "<group>"; };
+		B893C9BF29C9F69A00FAB5B2 /* SubjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectList.swift; sourceTree = "<group>"; };
+		B89759C829C6FB8F0002FBCA /* ScoreReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReport.swift; sourceTree = "<group>"; };
+		B89759CA29C6FC280002FBCA /* WiseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseParser.swift; sourceTree = "<group>"; };
+		B89759CC29C6FD5C0002FBCA /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B845721629C068E6008D6BC2 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +99,7 @@
 		B84571DD29C0688D008D6BC2 = {
 			isa = PBXGroup;
 			children = (
+				B845721329C068D1008D6BC2 /* Playground.playground */,
 				B84571E829C0688D008D6BC2 /* uosF12 */,
 				B84571F929C0688E008D6BC2 /* uosF12Tests */,
 				B845720329C0688E008D6BC2 /* uosF12UITests */,
@@ -94,10 +120,13 @@
 		B84571E829C0688D008D6BC2 /* uosF12 */ = {
 			isa = PBXGroup;
 			children = (
+				B8493D1829C44EAA00CB772C /* Views */,
+				B8493D1729C44EA400CB772C /* Resources */,
+				B8493D1629C44E9500CB772C /* Model */,
 				B84571E929C0688D008D6BC2 /* uosF12App.swift */,
-				B84571EB29C0688D008D6BC2 /* ContentView.swift */,
 				B84571ED29C0688E008D6BC2 /* Assets.xcassets */,
 				B84571EF29C0688E008D6BC2 /* Preview Content */,
+				B845721729C070E6008D6BC2 /* WebView.swift */,
 			);
 			path = uosF12;
 			sourceTree = "<group>";
@@ -127,6 +156,54 @@
 			path = uosF12UITests;
 			sourceTree = "<group>";
 		};
+		B8493D1629C44E9500CB772C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8493D1929C44FE100CB772C /* ModelData.swift */,
+				B89759C829C6FB8F0002FBCA /* ScoreReport.swift */,
+				B89759CA29C6FC280002FBCA /* WiseParser.swift */,
+				B89759CC29C6FD5C0002FBCA /* URLFactory.swift */,
+				B83944F329C84C0000466E1B /* Error.swift */,
+				B83944F529C84C1E00466E1B /* WebFetcher.swift */,
+				B86E771029C8B80E00E3F92E /* PortalID.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B8493D1729C44EA400CB772C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B8493D1829C44EAA00CB772C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B893C9BB29C9EF0000FAB5B2 /* Login */,
+				B893C9BA29C9EEFA00FAB5B2 /* ScoreReport */,
+				B84571EB29C0688D008D6BC2 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B893C9BA29C9EEFA00FAB5B2 /* ScoreReport */ = {
+			isa = PBXGroup;
+			children = (
+				B893C9BD29C9EF2300FAB5B2 /* SubjectView.swift */,
+				B893C9BF29C9F69A00FAB5B2 /* SubjectList.swift */,
+			);
+			path = ScoreReport;
+			sourceTree = "<group>";
+		};
+		B893C9BB29C9EF0000FAB5B2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B86E770E29C8B78400E3F92E /* Login.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +220,9 @@
 			dependencies = (
 			);
 			name = uosF12;
+			packageProductDependencies = (
+				B845721529C068E6008D6BC2 /* SwiftSoup */,
+			);
 			productName = uosF12;
 			productReference = B84571E629C0688D008D6BC2 /* uosF12.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +295,9 @@
 				Base,
 			);
 			mainGroup = B84571DD29C0688D008D6BC2;
+			packageReferences = (
+				B845721429C068E6008D6BC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = B84571E729C0688D008D6BC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,7 +340,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83944F429C84C0100466E1B /* Error.swift in Sources */,
+				B893C9C029C9F69A00FAB5B2 /* SubjectList.swift in Sources */,
+				B86E770F29C8B78400E3F92E /* Login.swift in Sources */,
+				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
+				B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */,
+				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
+				B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */,
+				B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */,
+				B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */,
 				B84571EC29C0688D008D6BC2 /* ContentView.swift in Sources */,
+				B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */,
+				B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */,
 				B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +677,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B845721429C068E6008D6BC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B845721529C068E6008D6BC2 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B845721429C068E6008D6BC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B84571DE29C0688D008D6BC2 /* Project object */;
 }
