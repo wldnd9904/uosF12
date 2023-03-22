@@ -16,7 +16,7 @@ extension Array where Element: Hashable {
 
 final class ModelData: ObservableObject {
     @Published var scoreReport:ScoreReport = ScoreReport()
-    @Published var portalID:PortalID = PortalID.blank
+    public var loggedIn:Bool = false
     public var gradeList:[String] = []
     public var yearList:[Int] = []
     public var divList:[SubjectDiv] = []
@@ -25,7 +25,6 @@ final class ModelData: ObservableObject {
         self.gradeList = scoreReport.Subjects.map{
             $0.gradeStr
         }.removingDuplicates()
-        print(self.gradeList)
         self.yearList = scoreReport.Subjects.map{
             $0.year
         }.removingDuplicates()
@@ -33,24 +32,26 @@ final class ModelData: ObservableObject {
             $0.subjectDiv
         }.removingDuplicates()
     }
-    public func login(){
-        WebFetcher.shared.login(portalID:PortalID(userID: "wldnd9904", password: "wldnd990428")){ result in
+    public func login(userID:String, password:String){
+        WebFetcher.shared.login(portalID:PortalID(userID: userID, password: password)){ result in
             switch result{
             case .success(_):
                 WebFetcher.shared.getScoreReport(completion:{ result in
                     switch result{
                     case .success(let report):
-                        self.scoreReport = report
-                        self.gradeList = report.Subjects.map{
-                            $0.gradeStr
-                        }.removingDuplicates().sorted()
-                        print(self.gradeList)
-                        self.yearList = report.Subjects.map{
-                            $0.year
-                        }.removingDuplicates().sorted()
-                        self.divList = report.Subjects.map{
-                            $0.subjectDiv
-                        }.removingDuplicates().sorted()
+                        DispatchQueue.main.async {[weak self] in
+                            self?.scoreReport = report
+                            self?.gradeList = report.Subjects.map{
+                                $0.gradeStr
+                            }.removingDuplicates().sorted()
+                            self?.yearList = report.Subjects.map{
+                                $0.year
+                            }.removingDuplicates().sorted()
+                            self?.divList = report.Subjects.map{
+                                $0.subjectDiv
+                            }.removingDuplicates().sorted()
+                            self?.loggedIn = true
+                        }
                     case .failure(let err):
                         print(err)
                     }

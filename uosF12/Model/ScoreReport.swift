@@ -23,11 +23,17 @@ public struct ScoreReport {
 }
 
 //학기
-public enum Semester: String, CaseIterable{
+public enum Semester: String, CaseIterable, Comparable{
     case spring = "1학기"
     case summer = "여름계절수업"
     case fall = "2학기"
     case winter = "겨울계절수업"
+    private var sortOrder: Int {
+        Semester.allCases.firstIndex(of: self)!
+    }
+    public static func < (lhs: Semester, rhs: Semester) -> Bool {
+        lhs.sortOrder<rhs.sortOrder
+    }
 }
 //교과구분
 public enum SubjectDiv: String, CaseIterable, Hashable, Comparable{

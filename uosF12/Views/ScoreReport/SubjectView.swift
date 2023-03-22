@@ -21,9 +21,11 @@ struct SubjectView: View {
                 if showDetail {
                         Text(String(subject.grade))
                         .foregroundColor(gradeColor(subject.gradeStr))
+                        .bold(subject.gradeStr=="A+"||subject.gradeStr=="S")
                 } else {
                     Text(subject.gradeStr)
                         .foregroundColor(gradeColor(subject.gradeStr))
+                        .bold(subject.gradeStr=="A+"||subject.gradeStr=="S")
                 }
                 Button {
                     withAnimation{
@@ -34,7 +36,7 @@ struct SubjectView: View {
                         .labelStyle(.iconOnly)
                         .imageScale(.large)
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
-                        .padding()
+                        .padding(10)
                 }
             }
             if showDetail {
@@ -47,11 +49,12 @@ struct SubjectView: View {
                 HStack{
                     Text(String(subject.year)+"년")
                     Text(subject.semester.rawValue)
-                    Spacer()
                     if subject.retry {
                         Text("재수강")
                             .foregroundColor(.red)
                     }
+                    Spacer()
+                    Text(String(subject.pnt)+"학점")
                 }
             }
         }
@@ -63,6 +66,7 @@ struct SubjectView_Previews: PreviewProvider {
         VStack{
             SubjectView(subject:Subject.demo)
                 .padding(.bottom,10)
+            Divider()
             SubjectView(subject:Subject.demo)
             Spacer()
         }.padding()

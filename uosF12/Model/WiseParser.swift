@@ -11,13 +11,11 @@ class StringParser : NSObject, XMLParserDelegate {
         if ret == "" {
             return nil
         } else {
-            print(ret)
             return ret
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        print(string)
         let value = string.trimmingCharacters(in: .whitespacesAndNewlines)
         if value == "" {
             return
@@ -41,7 +39,6 @@ class ScoreReportParser : NSObject, XMLParserDelegate {
         let xmlParser = XMLParser(data: data)
         xmlParser.delegate = self
         xmlParser.parse()
-        print(scoreReport)
         return scoreReport
     }
     func parserDidEndDocument(_ parser: XMLParser) {

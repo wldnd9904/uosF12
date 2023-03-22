@@ -1,6 +1,6 @@
 import SwiftUI
 
-func gradeColor(_ grade:String) -> Color {
+public func gradeColor(_ grade:String) -> Color {
     switch(grade){
     case "A+":
         fallthrough
@@ -11,11 +11,11 @@ func gradeColor(_ grade:String) -> Color {
     case "B+":
         fallthrough
     case "B0":
-        return .orange
+        return .yellow
     case "C+":
         fallthrough
     case "C0":
-        return .yellow
+        return .orange
     case "D+":
         fallthrough
     case "D0":

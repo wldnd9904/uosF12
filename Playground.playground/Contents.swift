@@ -1,14 +1,6 @@
 import UIKit
 import SwiftUI
-print(SubjectDiv.allCases)
 
-WebFetcher.shared.login(portalID:PortalID(userID: "wldnd9904", password: "wldnd990428")){ result in
-    switch result{
-    case .success(_):
-        WebFetcher.shared.getScoreReport(completion:{
-            print($0)
-        })
-    case .failure(let err):
-        print(err)
-    }
-}
+let modelData=ModelData()
+print(Dictionary(grouping: modelData.scoreReport.Subjects){$0.semester.rawValue}.sorted{$0.0<$1.0}.map{$0.1.sorted{$0.grade>$1.grade}})
+
