@@ -32,7 +32,6 @@ class ScoreReportParser : NSObject, XMLParserDelegate {
     var scoreReportDictionary:[String:String] = [:]
     var draftSubject: Subject?
     var subjectDictionary:[String:String] = [:]
-    var id = 0
     
     var subjectMode: Bool = false
     var tagName:String = ""
@@ -70,8 +69,6 @@ class ScoreReportParser : NSObject, XMLParserDelegate {
         }
         if subjectMode && elementName == "list"{
             draftSubject = Subject()
-            draftSubject!.id = self.id
-            self.id += 1
         }
     }
     //태그 내용
@@ -114,6 +111,7 @@ class ScoreReportParser : NSObject, XMLParserDelegate {
             }
             draftSubject?.pnt = Int(subjectDictionary["pnt"] ?? "") ?? 0
             draftSubject?.grade = Float(subjectDictionary["mrks"] ?? "") ?? 0
+            draftSubject?.gradeStr = subjectDictionary["conv_grade"] ?? ""
             draftSubject?.valid = subjectDictionary["efft_yn"]=="Y"
             draftSubject?.retry = subjectDictionary["re_tlsn_yn"]=="Y"
             scoreReport.Subjects.append(draftSubject!)

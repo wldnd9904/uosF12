@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SubjectView: View {
-    let subject:Subject
-    @State private var showDetail = true
+    var subject:Subject
+    @State private var showDetail = false
+    
     
     var body: some View {
         VStack{
@@ -17,9 +18,13 @@ struct SubjectView: View {
                 Text(subject.korName)
                     .font(.title3)
                 Spacer()
-                Text(String(subject.grade))
-                    .font(.headline)
-                    .foregroundColor(Color(red: (1.0 - CGFloat(subject.grade/4.5)), green: CGFloat(subject.grade/4.5), blue: 0.0))
+                if showDetail {
+                        Text(String(subject.grade))
+                        .foregroundColor(gradeColor(subject.gradeStr))
+                } else {
+                    Text(subject.gradeStr)
+                        .foregroundColor(gradeColor(subject.gradeStr))
+                }
                 Button {
                     withAnimation{
                         showDetail.toggle()

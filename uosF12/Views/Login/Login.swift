@@ -10,6 +10,7 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 
 
 struct Login: View {
+    @EnvironmentObject var modelData:ModelData
     @State private var portalID = PortalID.blank
     var body: some View {
         VStack{
@@ -28,7 +29,7 @@ struct Login: View {
                 .background(lightGreyColor)
                 .cornerRadius(10.0)
                 .padding(.bottom, 20)
-            Button(action: {return}){
+            Button(action: {modelData.login()}){
                 Text("로그인")
                      .font(.headline)
                      .foregroundColor(.white)
@@ -44,5 +45,6 @@ struct Login: View {
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
         Login()
+            .environmentObject(ModelData())
     }
 }

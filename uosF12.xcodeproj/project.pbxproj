@@ -26,6 +26,7 @@
 		B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759C829C6FB8F0002FBCA /* ScoreReport.swift */; };
 		B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CA29C6FC280002FBCA /* WiseParser.swift */; };
 		B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CC29C6FD5C0002FBCA /* URLFactory.swift */; };
+		B8A1BC3A29CA021B00D6E06E /* ColorExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1BC3929CA021B00D6E06E /* ColorExtend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		B89759C829C6FB8F0002FBCA /* ScoreReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReport.swift; sourceTree = "<group>"; };
 		B89759CA29C6FC280002FBCA /* WiseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseParser.swift; sourceTree = "<group>"; };
 		B89759CC29C6FD5C0002FBCA /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
+		B8A1BC3929CA021B00D6E06E /* ColorExtend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				B83944F329C84C0000466E1B /* Error.swift */,
 				B83944F529C84C1E00466E1B /* WebFetcher.swift */,
 				B86E771029C8B80E00E3F92E /* PortalID.swift */,
+				B8A1BC3929CA021B00D6E06E /* ColorExtend.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				B86E770F29C8B78400E3F92E /* Login.swift in Sources */,
 				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
 				B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */,
+				B8A1BC3A29CA021B00D6E06E /* ColorExtend.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
 				B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */,
 				B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */,
