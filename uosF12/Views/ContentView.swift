@@ -10,14 +10,22 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var modelData:ModelData
     @State private var selectedTab: Tab = .scoreReport
+    @State var filterMode:Bool = false
     var body: some View {
         ZStack{
             NavigationStack{
                 ZStack{
                     TabView(selection: $selectedTab) {
-                        SubjectList()
+                        SubjectList(filterMode: $filterMode)
                             .tag(Tab.scoreReport)
                             .environmentObject(modelData)
+                            .toolbar {
+                                Button {
+                                    filterMode.toggle()
+                                } label: {
+                                    Label("filter", systemImage: "slider.horizontal.3")
+                                }
+                            }
                             .navigationTitle("성적표")
                         Text("GD")
                             .tag(Tab.simulator)
@@ -41,7 +49,7 @@ struct ContentView: View {
             }
             Login()
                 .background(.white)
-                .opacity(modelData.loggedIn ? 0.0 : 1.0)
+                .opacity(modelData.loggedIn ? 0.0 : 0.0)
                 .animation(.spring(), value:modelData.loggedIn)
         }
     }
