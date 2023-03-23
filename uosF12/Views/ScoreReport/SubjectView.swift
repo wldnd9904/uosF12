@@ -16,7 +16,7 @@ struct SubjectView: View {
         VStack{
             HStack {
                 Text(subject.korName)
-                    .font(.title3)
+                    .font(.headline)
                 Spacer()
                 if showDetail {
                         Text(String(subject.grade))

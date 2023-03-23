@@ -1,7 +1,7 @@
 import Foundation
 
 public enum WiseError: Error {
-    case transportError
+    case invalidServerResponse
     case loginFailed
     case dataMissing
     case duplicated

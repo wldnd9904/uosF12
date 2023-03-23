@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var modelData:ModelData
     @State private var selectedTab: Tab = .scoreReport
-    @State var filterMode:Bool = false
+    @State private var filterMode:Bool = false
+    @State private var loggedIn:Bool = false
     var body: some View {
         ZStack{
             NavigationStack{
@@ -47,10 +48,10 @@ struct ContentView: View {
                     }
                 }
             }
-            Login()
-                .background(.white)
-                .opacity(modelData.loggedIn ? 0.0 : 0.0)
-                .animation(.spring(), value:modelData.loggedIn)
+            LoginView(loggedIn: $loggedIn)
+                .background(.background)
+                .opacity(loggedIn ? 0.0 : 1.0)
+                .animation(.spring(), value:loggedIn)
         }
     }
 }

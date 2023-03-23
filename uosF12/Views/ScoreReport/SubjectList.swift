@@ -24,7 +24,7 @@ struct SubjectList: View {
     }
     var semesterGroupedSubjects:[[Subject]]{
         Dictionary(grouping:filteredSubjects){
-            String($0.year)+$0.semester.rawValue
+            "\($0.year)\($0.semester.sortOrder)"
         }.sorted{$0.0<$1.0}.map{$0.1.sorted{$0.grade>$1.grade}}
     }
     var gradeGroupedSubjects:[[Subject]]{

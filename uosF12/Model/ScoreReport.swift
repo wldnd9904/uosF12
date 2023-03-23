@@ -28,8 +28,13 @@ public enum Semester: String, CaseIterable, Comparable{
     case summer = "여름계절수업"
     case fall = "2학기"
     case winter = "겨울계절수업"
-    private var sortOrder: Int {
-        Semester.allCases.firstIndex(of: self)!
+    var sortOrder: Int {
+        switch(self){
+            case .spring:  return 1
+            case .summer:  return 2
+            case .fall:  return 3
+            case .winter:  return 4
+        }
     }
     public static func < (lhs: Semester, rhs: Semester) -> Bool {
         lhs.sortOrder<rhs.sortOrder
