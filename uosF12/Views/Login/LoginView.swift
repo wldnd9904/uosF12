@@ -54,6 +54,7 @@ struct LoginView: View {
             }
             if modelData.studNo != "" {
                 loggedIn = true
+                focusField = nil
                 UIApplication.shared.endEditing()
             }
             loggingIn = false
@@ -61,81 +62,89 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack{
-            Spacer()
-            Image("logo_horizontal")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width:80, height:80)
-                .padding(.bottom,75)
-            TextField("ID", text: $userID)
-                .onSubmit {
-                    focusField = .pw
-                }
-                .disableAutocorrection(true)
-                .focused($focusField, equals: .id)
-                .submitLabel(.next)
-                .autocapitalization(.none)
-                .padding()
-                .background(.regularMaterial)
-                .cornerRadius(10.0)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    focusField = .id
-                }
-                .padding(.bottom, 20)
-
-            SecureField("PW", text: $password)
-                .onSubmit {
-                    if userID == "" {
-                        focusField = .id
-                    } else {
-                        loginAction()
+        ZStack{
+            VStack{
+                Spacer()
+                Image("logo_horizontal")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width:80, height:80)
+                    .padding(.bottom,75)
+                TextField("ID", text: $userID)
+                    .onSubmit {
+                        focusField = .pw
                     }
-                }
-                .disableAutocorrection(true)
-                .focused($focusField, equals: Field.pw)
-                .submitLabel(.go)
-                .autocapitalization(.none)
-                .padding()
-                .background(.regularMaterial)
-                .cornerRadius(10.0)
-                .overlay{
+                    .disabled(loggingIn || loggedIn)
+                    .disableAutocorrection(true)
+                    .focused($focusField, equals: .id)
+                    .submitLabel(.next)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(.regularMaterial)
+                    .cornerRadius(10.0)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        focusField = .id
+                    }
+                    .padding(.bottom, 20)
+                
+                SecureField("PW", text: $password)
+                    .onSubmit {
+                        if userID == "" {
+                            focusField = .id
+                        } else {
+                            loginAction()
+                        }
+                    }
+                    .disabled(loggingIn || loggedIn)
+                    .disableAutocorrection(true)
+                    .focused($focusField, equals: Field.pw)
+                    .submitLabel(.go)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(.regularMaterial)
+                    .cornerRadius(10.0)
+                    .overlay{
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.red, lineWidth: errorMessage == "" || password != "" ? 3 : 2)
                             .opacity(errorMessage == "" || password != "" ? 0.0 : 1.0)
                             .animation(.spring(), value:errorMessage == "" || password != "")
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        focusField = .pw
+                    }
+                    .padding(.bottom, 20)
+                Button(action: loginAction){
+                    Text("로그인")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220, height: 60)
+                        .background(.blue)
+                        .cornerRadius(15.0)
+                        .opacity((userID == "" || password == "" || loggingIn) ? 0.6: 1)
+                        .scaleEffect((userID == "" || password == "" || loggingIn) ? 0.95: 1)
+                        .animation(.spring(), value:(userID == "" || password == "" || loggingIn))
                 }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    focusField = .pw
+                .disabled(userID == "" || password == "" || loggingIn)
+                Spacer()
+                if (errorMessage == "" || password != "") {
+                    Text("본 앱은 개인정보를 수집하거나 저장하지 않습니다.")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                } else {
+                    Text(errorMessage)
+                        .font(.subheadline)
+                        .foregroundColor(.red)
                 }
-                .padding(.bottom, 20)
-            Button(action: loginAction){
-                Text("로그인")
-                     .font(.headline)
-                     .foregroundColor(.white)
-                     .padding()
-                     .frame(width: 220, height: 60)
-                     .background(.blue)
-                     .cornerRadius(15.0)
-                     .opacity((userID == "" || password == "" || loggingIn) ? 0.6: 1)
-                     .scaleEffect((userID == "" || password == "" || loggingIn) ? 0.95: 1)
-                     .animation(.spring(), value:(userID == "" || password == "" || loggingIn))
             }
-            .disabled(userID == "" || password == "" || loggingIn)
-            Spacer()
-            if (errorMessage == "" || password != "") {
-                Text("본 앱은 개인정보를 수집하거나 저장하지 않습니다.")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            } else {
-                Text(errorMessage)
-                .font(.subheadline)
-                .foregroundColor(.red)
-            }
+            .padding()
+            Spinner()
+                .backgroundStyle(.background)
+                .opacity(loggingIn ? 0.5: 0)
+                .animation(.spring(), value:loggingIn)
         }
-        .padding()
     }
 }
 

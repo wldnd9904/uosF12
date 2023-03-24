@@ -10,36 +10,22 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var modelData:ModelData
     @State private var selectedTab: Tab = .scoreReport
-    @State private var filterMode:Bool = false
     @State private var loggedIn:Bool = false
     var body: some View {
         ZStack{
             NavigationStack{
                 ZStack{
                     TabView(selection: $selectedTab) {
-                        SubjectList(filterMode: $filterMode)
+                        SubjectList()
                             .tag(Tab.scoreReport)
-                            .environmentObject(modelData)
-                            .toolbar {
-                                Button {
-                                    filterMode.toggle()
-                                } label: {
-                                    Label("filter", systemImage: "slider.horizontal.3")
-                                }
-                            }
-                            .navigationTitle("성적표")
-                        Text("GD")
+                        Text("TODO")
                             .tag(Tab.simulator)
-                            .navigationTitle("학점 시뮬레이터")
-                        Text("GD")
+                        Text("TODO")
                             .tag(Tab.f12)
-                            .navigationTitle("F12")
-                        Text("GD")
+                        CreditList()
                             .tag(Tab.credits)
-                            .navigationTitle("이수학점조회")
-                        Text("GD")
-                            .tag(Tab.profile)
-                            .navigationTitle("내 정보")
+                        Text("TODO")
+                            .tag(Tab.settings)
                     }
                     .tabViewStyle(.page)
                     VStack{
@@ -47,6 +33,8 @@ struct ContentView: View {
                         TabBar(selectedTab: $selectedTab)
                     }
                 }
+                .navigationTitle(selectedTab.name)
+                .navigationBarTitleDisplayMode(.inline)
             }
             LoginView(loggedIn: $loggedIn)
                 .background(.background)

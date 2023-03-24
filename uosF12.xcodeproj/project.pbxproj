@@ -10,7 +10,6 @@
 		B833DB6E29CD877B00498589 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB6D29CD877B00498589 /* Credits.swift */; };
 		B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7229CD9D7F00498589 /* CreditView.swift */; };
 		B833DB7529CDA4F800498589 /* CreditList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7429CDA4F800498589 /* CreditList.swift */; };
-		B833DB7729CDA78B00498589 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7629CDA78B00498589 /* MainTabView.swift */; };
 		B83944F429C84C0100466E1B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83944F329C84C0000466E1B /* Error.swift */; };
 		B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83944F529C84C1E00466E1B /* WebFetcher.swift */; };
 		B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571E929C0688D008D6BC2 /* uosF12App.swift */; };
@@ -20,7 +19,6 @@
 		B84571FB29C0688E008D6BC2 /* uosF12Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571FA29C0688E008D6BC2 /* uosF12Tests.swift */; };
 		B845720529C0688E008D6BC2 /* uosF12UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845720429C0688E008D6BC2 /* uosF12UITests.swift */; };
 		B845720729C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845720629C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift */; };
-		B845721629C068E6008D6BC2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B845721529C068E6008D6BC2 /* SwiftSoup */; };
 		B845721829C070E6008D6BC2 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845721729C070E6008D6BC2 /* WebView.swift */; };
 		B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8493D1929C44FE100CB772C /* ModelData.swift */; };
 		B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E770E29C8B78400E3F92E /* LoginView.swift */; };
@@ -31,6 +29,8 @@
 		B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CA29C6FC280002FBCA /* WiseParser.swift */; };
 		B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CC29C6FD5C0002FBCA /* URLFactory.swift */; };
 		B8A1BC3A29CA021B00D6E06E /* gradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1BC3929CA021B00D6E06E /* gradeColor.swift */; };
+		B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A51DC429CE31A200CFEDDD /* Spinner.swift */; };
+		B8C03D1529CE23E100343A05 /* SubjectFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C03D1429CE23E100343A05 /* SubjectFilter.swift */; };
 		B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D4332129CB5F67001A17A6 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,6 @@
 		B833DB6D29CD877B00498589 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		B833DB7229CD9D7F00498589 /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		B833DB7429CDA4F800498589 /* CreditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditList.swift; sourceTree = "<group>"; };
-		B833DB7629CDA78B00498589 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B83944F329C84C0000466E1B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		B83944F529C84C1E00466E1B /* WebFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFetcher.swift; sourceTree = "<group>"; };
 		B84571E629C0688D008D6BC2 /* uosF12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uosF12.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +78,8 @@
 		B89759CA29C6FC280002FBCA /* WiseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseParser.swift; sourceTree = "<group>"; };
 		B89759CC29C6FD5C0002FBCA /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
 		B8A1BC3929CA021B00D6E06E /* gradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradeColor.swift; sourceTree = "<group>"; };
+		B8A51DC429CE31A200CFEDDD /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		B8C03D1429CE23E100343A05 /* SubjectFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFilter.swift; sourceTree = "<group>"; };
 		B8D4332129CB5F67001A17A6 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B845721629C068E6008D6BC2 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +207,6 @@
 				B893C9BB29C9EF0000FAB5B2 /* Login */,
 				B893C9BA29C9EEFA00FAB5B2 /* ScoreReport */,
 				B84571EB29C0688D008D6BC2 /* ContentView.swift */,
-				B833DB7629CDA78B00498589 /* MainTabView.swift */,
 				B8D4332129CB5F67001A17A6 /* TabBar.swift */,
 			);
 			path = Views;
@@ -218,6 +217,7 @@
 			children = (
 				B893C9BD29C9EF2300FAB5B2 /* SubjectView.swift */,
 				B893C9BF29C9F69A00FAB5B2 /* SubjectList.swift */,
+				B8C03D1429CE23E100343A05 /* SubjectFilter.swift */,
 			);
 			path = ScoreReport;
 			sourceTree = "<group>";
@@ -226,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				B86E770E29C8B78400E3F92E /* LoginView.swift */,
+				B8A51DC429CE31A200CFEDDD /* Spinner.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -247,7 +248,6 @@
 			);
 			name = uosF12;
 			packageProductDependencies = (
-				B845721529C068E6008D6BC2 /* SwiftSoup */,
 			);
 			productName = uosF12;
 			productReference = B84571E629C0688D008D6BC2 /* uosF12.app */;
@@ -322,7 +322,6 @@
 			);
 			mainGroup = B84571DD29C0688D008D6BC2;
 			packageReferences = (
-				B845721429C068E6008D6BC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = B84571E729C0688D008D6BC2 /* Products */;
 			projectDirPath = "";
@@ -368,7 +367,6 @@
 			files = (
 				B83944F429C84C0100466E1B /* Error.swift in Sources */,
 				B893C9C029C9F69A00FAB5B2 /* SubjectList.swift in Sources */,
-				B833DB7729CDA78B00498589 /* MainTabView.swift in Sources */,
 				B833DB7529CDA4F800498589 /* CreditList.swift in Sources */,
 				B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */,
 				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
@@ -377,6 +375,7 @@
 				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
 				B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */,
+				B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */,
 				B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */,
 				B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */,
 				B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */,
@@ -385,6 +384,7 @@
 				B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */,
 				B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */,
 				B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */,
+				B8C03D1529CE23E100343A05 /* SubjectFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,25 +709,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B845721429C068E6008D6BC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B845721529C068E6008D6BC2 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B845721429C068E6008D6BC2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B84571DE29C0688D008D6BC2 /* Project object */;
 }

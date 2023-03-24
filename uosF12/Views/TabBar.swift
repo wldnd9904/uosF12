@@ -11,7 +11,21 @@ enum Tab: String, CaseIterable {
     case simulator = "questionmark.bubble"
     case f12 = "12.lane"
     case credits = "list.bullet.clipboard"
-    case profile = "person"
+    case settings = "person"
+    var name:String {
+        switch(self){
+        case .credits:
+            return "이수학점조회"
+        case .scoreReport:
+            return "성적표"
+        case .simulator:
+            return "학점 실험실"
+        case .f12:
+            return "F12"
+        case .settings:
+            return "설정"
+        }
+    }
 }
 
 struct TabBar: View {

@@ -11,7 +11,7 @@ import SwiftUI
 struct SubjectList: View {
     @EnvironmentObject var modelData: ModelData
     @State var sortByGrade:Bool = false
-    @Binding var filterMode:Bool
+    @State var filterMode:Bool = false
     @State var filterYear:Int? = nil
     @State var filterGrade:String? = nil
     @State var filterDiv:SubjectDiv? = nil
@@ -73,59 +73,27 @@ struct SubjectList: View {
                     }
                 }
             }
-            .padding(.bottom,200)
+            .padding(.bottom,150)
         }
         .padding()
-        .sheet(isPresented: $filterMode){
-            List {
-                Text("정렬").bold()
-                    .listRowSeparator(.hidden)
-                Picker("정렬", selection: $sortByGrade) {
-                    Text("연도순").tag(false)
-                    Text("성적순").tag(true)
-                }
-                .pickerStyle(.segmented)
-                .listRowSeparator(.hidden)
-                Text("필터").bold()
-                    .listRowSeparator(.hidden)
-                Picker("수강년도", selection: $filterYear) {
-                    Text("선택안함").tag(nil as Int?)
-                    ForEach(modelData.yearList, id:\.self){ year in
-                        Text(String(year))
-                            .tag(year as Int?)
-                    }
-                }
-                .listRowSeparator(.hidden)
-                Picker("학점", selection: $filterGrade) {
-                    Text("선택안함").tag(nil as String?)
-                    ForEach(modelData.gradeList, id:\.self){ grade in
-                        Text(grade)
-                            .tag(grade as String?)
-                    }
-                }
-                .listRowSeparator(.hidden)
-                Picker("구분", selection: $filterDiv) {
-                    Text("선택안함").tag(nil as SubjectDiv?)
-                    ForEach(modelData.divList, id:\.self){ div in
-                        Text(div.rawValue)
-                            .tag(div as SubjectDiv?)
-                    }
-                }
-                .listRowSeparator(.hidden)
-            }
-            .padding()
-            .listStyle(.inset)
-            .presentationDetents([.fraction(0.45)])
-            .presentationDragIndicator(.visible)
-        }
         .scrollIndicators(.hidden)
+        .toolbar {
+            Button {
+                filterMode.toggle()
+            } label: {
+                Label("필터", systemImage: "slider.horizontal.3")
+            }
+        }
+        .sheet(isPresented: $filterMode){
+            SubjectFilter(sortByGrade: $sortByGrade, filterYear: $filterYear, filterGrade: $filterGrade, filterDiv: $filterDiv)
+        }
     }
 }
 
 
 struct SubjectList_Previews: PreviewProvider {
     static var previews: some View {
-        SubjectList(filterMode: .constant(true))
+        SubjectList()
             .environmentObject(ModelData())
     }
 }
