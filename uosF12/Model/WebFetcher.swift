@@ -12,6 +12,20 @@ public class WebFetcher {
     private let session = URLSession(configuration: .default)
     private init() {}
     
+    public func getCredits(studNo:String) async throws -> Credits {
+        let ret = Credits()
+        let urlComponents = URLFactory.getCreditsURLComponents(studNo: studNo)
+        var requestURL = URLRequest(url: urlComponents.url!)
+        requestURL.httpMethod = "POST"
+        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let (data, response) = try await session.data(for:requestURL)
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
+            throw WiseError.invalidServerResponse
+        }
+        return CreditsParser().getCredits(data: data)
+    }
+    
+    
     public func getScoreReport(studNo:String) async throws -> ScoreReport {
         let urlComponents = URLFactory.getScoreReportURLComponents(studNo: studNo)
         var requestURL = URLRequest(url: urlComponents.url!)

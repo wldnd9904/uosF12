@@ -35,4 +35,16 @@ public class URLFactory {
         _ = params.map{ret.queryItems?.append(URLQueryItem(name: $0.key, value: $0.value))}
         return ret
     }
+    
+    public static func getCreditsURLComponents(studNo: String) -> URLComponents {
+        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ugt.UgtPlanCmpSubject.do")!
+        let params: [String: String] = [
+            "strStudId" : studNo,
+            "_user_info": studNo,
+            "_COMMAND_" : "List",
+            "_XML_" : "XML",
+            "_strMenuId" : "stud00560"]
+        ret.queryItems = params.map{URLQueryItem(name: $0.key, value: $0.value)}
+        return ret
+    }
 }

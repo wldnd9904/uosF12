@@ -25,7 +25,7 @@ struct SubjectList: View {
     var semesterGroupedSubjects:[[Subject]]{
         Dictionary(grouping:filteredSubjects){
             "\($0.year)\($0.semester.sortOrder)"
-        }.sorted{$0.0<$1.0}.map{$0.1.sorted{$0.grade>$1.grade}}
+        }.sorted{$0.0<$1.0}.map{$0.1.sorted{$0.gradeStr<$1.gradeStr}}
     }
     var gradeGroupedSubjects:[[Subject]]{
         Dictionary(grouping:filteredSubjects){
@@ -81,7 +81,7 @@ struct SubjectList: View {
                 Text("정렬").bold()
                     .listRowSeparator(.hidden)
                 Picker("정렬", selection: $sortByGrade) {
-                    Text("년도순").tag(false)
+                    Text("연도순").tag(false)
                     Text("성적순").tag(true)
                 }
                 .pickerStyle(.segmented)
@@ -118,6 +118,7 @@ struct SubjectList: View {
             .presentationDetents([.fraction(0.45)])
             .presentationDragIndicator(.visible)
         }
+        .scrollIndicators(.hidden)
     }
 }
 

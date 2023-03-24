@@ -4,8 +4,6 @@ public func gradeColor(_ grade:String) -> Color {
     switch(grade){
     case "A+":
         fallthrough
-    case "S":
-        fallthrough
     case "A0":
         return .green
     case "B+":
@@ -22,6 +20,8 @@ public func gradeColor(_ grade:String) -> Color {
         return .red
     case "F":
         return .pink
+    case "S":
+        return .blue
     default:
         return .primary
     }

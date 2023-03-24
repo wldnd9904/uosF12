@@ -112,6 +112,80 @@ class ScoreReportParser : NSObject, XMLParserDelegate {
             draftSubject?.valid = subjectDictionary["efft_yn"]=="Y"
             draftSubject?.retry = subjectDictionary["re_tlsn_yn"]=="Y"
             scoreReport.Subjects.append(draftSubject!)
+            subjectDictionary = [:]
+        }
+    }
+}
+
+class CreditsParser : NSObject, XMLParserDelegate {
+    var credits = Credits()
+    var draftCreditItem: CreditItem?
+    var creditItemDictionary:[String:String] = [:]
+    
+    var creditItemMode: Bool = false
+    var tagName:String = ""
+    
+    func getCredits(data:Data) -> Credits {
+        credits = Credits()
+        let xmlParser = XMLParser(data: data)
+        xmlParser.delegate = self
+        xmlParser.parse()
+        return credits
+    }
+    //태그 시작
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        self.tagName = elementName
+        if elementName == "mainList1" {
+            creditItemMode = true
+        }
+        if creditItemMode && elementName == "list"{
+            draftCreditItem = CreditItem()
+        }
+    }
+    //태그 내용
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let value = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if  value == "" {return}
+        if creditItemMode {
+            creditItemDictionary[self.tagName] = value
+        }
+    }
+    //태그 끝
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "mainList1" {
+            creditItemMode = false
+        }
+        if creditItemMode && elementName == "list"{
+            if creditItemDictionary["cmp_div_nm"] == "졸업이수학점" {
+                credits.pnt = Int(creditItemDictionary["get_pnt"] ?? "") ?? 0
+                credits.min = Int(creditItemDictionary["new_min_pnt"] ?? "") ?? 0
+                credits.max = Int(creditItemDictionary["new_max_pnt"] ?? "") ?? 0
+                credits.cnt = Int(creditItemDictionary["cnt"] ?? "") ?? 0
+            } else {
+                draftCreditItem!.name = creditItemDictionary["cmp_div_nm"] ?? ""
+                draftCreditItem!.pnt = Int(creditItemDictionary["get_pnt"] ?? "") ?? 0
+                draftCreditItem!.min = Int(creditItemDictionary["new_min_pnt"] ?? "") ?? 0
+                draftCreditItem!.max = Int(creditItemDictionary["new_max_pnt"] ?? "") ?? 0
+                draftCreditItem!.cnt = Int(creditItemDictionary["cnt"] ?? "") ?? 0
+                credits.CreditItems.append(draftCreditItem!)
+                if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name == "교양" {
+                    credits.GE = draftCreditItem!
+                } else if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name == "전공" {
+                    credits.major = draftCreditItem!
+                } else if draftCreditItem!.name != "전공" && (draftCreditItem!.name.contains("전공") || draftCreditItem!.name.contains("일반")){
+                    credits.major.child.append(draftCreditItem!)
+                } else if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name != "교양" && draftCreditItem!.name.contains("교양"){
+                    credits.GE.child.append(draftCreditItem!)
+                } else if creditItemDictionary["grdt_cmp_std_nm"] != nil {
+                    let parentCand = credits.GE.child.filter{$0.name.contains(creditItemDictionary["grdt_cmp_std_nm"]!)}
+                    if !parentCand.isEmpty {
+                        parentCand[0].child.append(draftCreditItem!)
+                    }
+                } else {
+                    credits.etc.append(draftCreditItem!)
+                }
+                creditItemDictionary = [:]
+            }
         }
     }
 }

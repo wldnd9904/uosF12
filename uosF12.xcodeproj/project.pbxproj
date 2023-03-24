@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B833DB6E29CD877B00498589 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB6D29CD877B00498589 /* Credits.swift */; };
+		B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7229CD9D7F00498589 /* CreditView.swift */; };
+		B833DB7529CDA4F800498589 /* CreditList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7429CDA4F800498589 /* CreditList.swift */; };
+		B833DB7729CDA78B00498589 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7629CDA78B00498589 /* MainTabView.swift */; };
 		B83944F429C84C0100466E1B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83944F329C84C0000466E1B /* Error.swift */; };
 		B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83944F529C84C1E00466E1B /* WebFetcher.swift */; };
 		B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571E929C0688D008D6BC2 /* uosF12App.swift */; };
@@ -48,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B833DB6D29CD877B00498589 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		B833DB7229CD9D7F00498589 /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
+		B833DB7429CDA4F800498589 /* CreditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditList.swift; sourceTree = "<group>"; };
+		B833DB7629CDA78B00498589 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B83944F329C84C0000466E1B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		B83944F529C84C1E00466E1B /* WebFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFetcher.swift; sourceTree = "<group>"; };
 		B84571E629C0688D008D6BC2 /* uosF12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uosF12.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B833DB6F29CD9D5B00498589 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				B833DB7229CD9D7F00498589 /* CreditView.swift */,
+				B833DB7429CDA4F800498589 /* CreditList.swift */,
+			);
+			path = Credits;
+			sourceTree = "<group>";
+		};
 		B84571DD29C0688D008D6BC2 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +188,7 @@
 				B83944F529C84C1E00466E1B /* WebFetcher.swift */,
 				B86E771029C8B80E00E3F92E /* PortalID.swift */,
 				B8A1BC3929CA021B00D6E06E /* gradeColor.swift */,
+				B833DB6D29CD877B00498589 /* Credits.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,9 +203,11 @@
 		B8493D1829C44EAA00CB772C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B833DB6F29CD9D5B00498589 /* Credits */,
 				B893C9BB29C9EF0000FAB5B2 /* Login */,
 				B893C9BA29C9EEFA00FAB5B2 /* ScoreReport */,
 				B84571EB29C0688D008D6BC2 /* ContentView.swift */,
+				B833DB7629CDA78B00498589 /* MainTabView.swift */,
 				B8D4332129CB5F67001A17A6 /* TabBar.swift */,
 			);
 			path = Views;
@@ -348,12 +368,16 @@
 			files = (
 				B83944F429C84C0100466E1B /* Error.swift in Sources */,
 				B893C9C029C9F69A00FAB5B2 /* SubjectList.swift in Sources */,
+				B833DB7729CDA78B00498589 /* MainTabView.swift in Sources */,
+				B833DB7529CDA4F800498589 /* CreditList.swift in Sources */,
 				B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */,
 				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
 				B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */,
 				B8A1BC3A29CA021B00D6E06E /* gradeColor.swift in Sources */,
+				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
 				B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */,
+				B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */,
 				B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */,
 				B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */,
 				B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */,

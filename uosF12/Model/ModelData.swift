@@ -15,11 +15,12 @@ extension Array where Element: Hashable {
 }
 
 final class ModelData: ObservableObject {
-    @Published public var scoreReport:ScoreReport = ScoreReport()
+    @Published public var scoreReport:ScoreReport = ScoreReport.demo
     public var studNo:String = ""
     public var gradeList:[String] = []
     public var yearList:[Int] = []
     public var divList:[SubjectDiv] = []
+    public var credits:Credits = Credits.demo
     public init(){
         self.scoreReport = ScoreReport.demo
         self.gradeList = scoreReport.Subjects.map{
@@ -35,44 +36,13 @@ final class ModelData: ObservableObject {
     public func login(userID:String, password:String) async throws {
         self.studNo = try await WebFetcher.shared.logInAndGetStudentNo(userID: userID, password: password)
         let report = try await WebFetcher.shared.getScoreReport(studNo: studNo)
+        let credits = try await WebFetcher.shared.getCredits(studNo: studNo)
         DispatchQueue.main.async {[weak self] in
             self?.scoreReport = report
             self?.gradeList = report.Subjects.map{$0.gradeStr}.removingDuplicates().sorted()
             self?.yearList = report.Subjects.map{$0.year}.removingDuplicates().sorted()
             self?.divList = report.Subjects.map{$0.subjectDiv}.removingDuplicates().sorted()
+            self?.credits = credits
         }
     }
-    /*public func login(userID:String, password:String){
-        WebFetcher.shared.login(portalID:PortalID(userID: userID, password: password)){ result in
-            switch result{
-            case .success(_):
-                WebFetcher.shared.getScoreReport(completion:{ result in
-                    switch result{
-                    case .success(let report):
-                        DispatchQueue.main.async {[weak self] in
-                            self?.scoreReport = report
-                            self?.gradeList = report.Subjects.map{
-                                $0.gradeStr
-                            }.removingDuplicates().sorted()
-                            self?.yearList = report.Subjects.map{
-                                $0.year
-                            }.removingDuplicates().sorted()
-                            self?.divList = report.Subjects.map{
-                                $0.subjectDiv
-                            }.removingDuplicates().sorted()
-                            self?.loggedIn = true
-                            self?.loggingIn = false
-                        }
-                    case .failure(let err):
-                        print(err)
-                        self.loggingIn = false
-                    }
-                    
-                })
-            case .failure(let err):
-                print(err)
-                self.loggingIn = false
-            }
-        }
-    }*/
 }
