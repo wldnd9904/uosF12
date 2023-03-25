@@ -142,7 +142,7 @@ struct LoginView: View {
             .padding()
             Spinner()
                 .backgroundStyle(.background)
-                .opacity(loggingIn ? 0.5: 0)
+                .opacity(loggingIn ? 0.7: 0)
                 .animation(.spring(), value:loggingIn)
         }
     }

@@ -13,28 +13,30 @@ struct ContentView: View {
     @State private var loggedIn:Bool = false
     var body: some View {
         ZStack{
-            NavigationStack{
-                ZStack{
-                    TabView(selection: $selectedTab) {
-                        SubjectList()
-                            .tag(Tab.scoreReport)
-                        Text("TODO")
-                            .tag(Tab.simulator)
-                        Text("TODO")
-                            .tag(Tab.f12)
-                        CreditList()
-                            .tag(Tab.credits)
-                        Text("TODO")
-                            .tag(Tab.settings)
+            if loggedIn{
+                NavigationStack{
+                    ZStack{
+                        TabView(selection: $selectedTab) {
+                            SubjectList()
+                                .tag(Tab.scoreReport)
+                            SimulatorView()
+                                .tag(Tab.simulator)
+                            Text("TODO")
+                                .tag(Tab.f12)
+                            CreditList()
+                                .tag(Tab.credits)
+                            Text("TODO")
+                                .tag(Tab.settings)
+                        }
+                        .tabViewStyle(.page)
+                        VStack{
+                            Spacer()
+                            TabBar(selectedTab: $selectedTab)
+                        }
                     }
-                    .tabViewStyle(.page)
-                    VStack{
-                        Spacer()
-                        TabBar(selectedTab: $selectedTab)
-                    }
+                    .navigationTitle(selectedTab.name)
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                .navigationTitle(selectedTab.name)
-                .navigationBarTitleDisplayMode(.inline)
             }
             LoginView(loggedIn: $loggedIn)
                 .background(.background)

@@ -8,10 +8,10 @@ import SwiftUI
 
 enum Tab: String, CaseIterable {
     case scoreReport = "list.dash"
-    case simulator = "questionmark.bubble"
-    case f12 = "12.lane"
+    case simulator = "atom"
+    case f12 = "textformat.12"
     case credits = "list.bullet.clipboard"
-    case settings = "person"
+    case settings = "gearshape"
     var name:String {
         switch(self){
         case .credits:
@@ -30,18 +30,14 @@ enum Tab: String, CaseIterable {
 
 struct TabBar: View {
     @Binding var selectedTab: Tab
-    private var fillImage: String {
-        selectedTab.rawValue
-    }
-    
     
     var body: some View {
         VStack {
             HStack {
                 ForEach(Tab.allCases, id: \.rawValue) { tab in
                     Spacer()
-                    Image(systemName: selectedTab == tab ? fillImage : tab.rawValue)
-                        .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
+                    Image(systemName: tab.rawValue)
+                        .scaleEffect(tab == selectedTab ? 1.3 : 1.1)
                         .foregroundColor(tab == selectedTab ? .blue : .gray)
                         .font(.system(size: 20))
                         .padding()

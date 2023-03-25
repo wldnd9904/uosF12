@@ -15,24 +15,16 @@ struct SubjectList: View {
     @State var filterYear:Int? = nil
     @State var filterGrade:String? = nil
     @State var filterDiv:SubjectDiv? = nil
-    var filteredSubjects:[Subject] {
-        modelData.scoreReport.Subjects.filter{ subject in
-            ((filterYear == nil)||subject.year==filterYear) && ((filterGrade == nil)||subject.gradeStr==filterGrade) && ((filterDiv == nil)||subject.subjectDiv==filterDiv)
-        }.sorted{
-            sortByGrade ? $0.grade > $1.grade : (($0.year, $0.semester) < ($1.year, $1.semester))
-        }
+    var filteredSubjects: [Subject] {
+        ScoreReportHelper.filteredSubjects(subjects: modelData.scoreReport.Subjects, filterYear: filterYear, filterGrade: filterGrade, filterDiv: filterDiv, sortByGrade: sortByGrade)
     }
     var semesterGroupedSubjects:[[Subject]]{
-        Dictionary(grouping:filteredSubjects){
-            "\($0.year)\($0.semester.sortOrder)"
-        }.sorted{$0.0<$1.0}.map{$0.1.sorted{$0.gradeStr<$1.gradeStr}}
+        ScoreReportHelper.semesterGroupedSubjects(subjects: filteredSubjects)
     }
     var gradeGroupedSubjects:[[Subject]]{
-        Dictionary(grouping:filteredSubjects){
-            $0.gradeStr
-        }.sorted{$0.0<$1.0}.map{$0.1.sorted{$0.year<$1.year}}
+        ScoreReportHelper.gradeGroupedSubjects(subjects: filteredSubjects)
     }
-    
+
     var body: some View {
         ScrollView{
             VStack{
@@ -53,7 +45,7 @@ struct SubjectList: View {
                 Divider()
                 if sortByGrade {
                     ForEach(gradeGroupedSubjects,id:\.self[0].id){ subjects in
-                        Text("\(subjects[0].gradeStr):  \(subjects.count)개, \(subjects.reduce(0){$0+$1.pnt})학점")
+                        Text("\(subjects[0].gradeStr):  \(subjects.count)개, \(ScoreReportHelper.pntSum(subjects))학점")
                             .font(.headline)
                         Divider()
                         ForEach(subjects){ subject in
@@ -63,7 +55,7 @@ struct SubjectList: View {
                     }
                 } else {
                     ForEach(semesterGroupedSubjects,id:\.self[0].id){ subjects in
-                        Text("\(String(subjects[0].year))년  \(subjects[0].semester.rawValue):  \(subjects.count)개, \(subjects.reduce(0){$0+$1.pnt})학점")
+                        Text("\(String(subjects[0].year))년  \(subjects[0].semester.rawValue):  \(subjects.count)개, \(ScoreReportHelper.pntSum(subjects))학점 (\(String(format:"%.2f",ScoreReportHelper.averageGrade(subjects))))")
                             .font(.headline)
                         Divider()
                         ForEach(subjects){ subject in

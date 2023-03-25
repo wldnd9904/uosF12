@@ -23,6 +23,9 @@
 		B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8493D1929C44FE100CB772C /* ModelData.swift */; };
 		B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E770E29C8B78400E3F92E /* LoginView.swift */; };
 		B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E771029C8B80E00E3F92E /* PortalID.swift */; };
+		B8904D9A29CF4E45005E73A9 /* SimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8904D9929CF4E45005E73A9 /* SimulatorView.swift */; };
+		B8904D9C29CF51B1005E73A9 /* ScoreChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8904D9B29CF51B1005E73A9 /* ScoreChart.swift */; };
+		B8904D9E29CF538C005E73A9 /* ScoreReportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8904D9D29CF538C005E73A9 /* ScoreReportHelper.swift */; };
 		B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B893C9BD29C9EF2300FAB5B2 /* SubjectView.swift */; };
 		B893C9C029C9F69A00FAB5B2 /* SubjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B893C9BF29C9F69A00FAB5B2 /* SubjectList.swift */; };
 		B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759C829C6FB8F0002FBCA /* ScoreReport.swift */; };
@@ -72,6 +75,10 @@
 		B8493D1929C44FE100CB772C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		B86E770E29C8B78400E3F92E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B86E771029C8B80E00E3F92E /* PortalID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalID.swift; sourceTree = "<group>"; };
+		B8904D9929CF4E45005E73A9 /* SimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorView.swift; sourceTree = "<group>"; };
+		B8904D9B29CF51B1005E73A9 /* ScoreChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreChart.swift; sourceTree = "<group>"; };
+		B8904D9D29CF538C005E73A9 /* ScoreReportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReportHelper.swift; sourceTree = "<group>"; };
+		B8904D9F29CF5AEB005E73A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B893C9BD29C9EF2300FAB5B2 /* SubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectView.swift; sourceTree = "<group>"; };
 		B893C9BF29C9F69A00FAB5B2 /* SubjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectList.swift; sourceTree = "<group>"; };
 		B89759C829C6FB8F0002FBCA /* ScoreReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReport.swift; sourceTree = "<group>"; };
@@ -141,6 +148,7 @@
 		B84571E829C0688D008D6BC2 /* uosF12 */ = {
 			isa = PBXGroup;
 			children = (
+				B8904D9F29CF5AEB005E73A9 /* Info.plist */,
 				B8493D1829C44EAA00CB772C /* Views */,
 				B8493D1729C44EA400CB772C /* Resources */,
 				B8493D1629C44E9500CB772C /* Model */,
@@ -189,6 +197,7 @@
 				B86E771029C8B80E00E3F92E /* PortalID.swift */,
 				B8A1BC3929CA021B00D6E06E /* gradeColor.swift */,
 				B833DB6D29CD877B00498589 /* Credits.swift */,
+				B8904D9D29CF538C005E73A9 /* ScoreReportHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +212,7 @@
 		B8493D1829C44EAA00CB772C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B8904D9829CF4E07005E73A9 /* Simulator */,
 				B833DB6F29CD9D5B00498589 /* Credits */,
 				B893C9BB29C9EF0000FAB5B2 /* Login */,
 				B893C9BA29C9EEFA00FAB5B2 /* ScoreReport */,
@@ -210,6 +220,15 @@
 				B8D4332129CB5F67001A17A6 /* TabBar.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B8904D9829CF4E07005E73A9 /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				B8904D9929CF4E45005E73A9 /* SimulatorView.swift */,
+				B8904D9B29CF51B1005E73A9 /* ScoreChart.swift */,
+			);
+			path = Simulator;
 			sourceTree = "<group>";
 		};
 		B893C9BA29C9EEFA00FAB5B2 /* ScoreReport */ = {
@@ -374,17 +393,20 @@
 				B8A1BC3A29CA021B00D6E06E /* gradeColor.swift in Sources */,
 				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
+				B8904D9A29CF4E45005E73A9 /* SimulatorView.swift in Sources */,
 				B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */,
 				B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */,
 				B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */,
 				B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */,
 				B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */,
+				B8904D9E29CF538C005E73A9 /* ScoreReportHelper.swift in Sources */,
 				B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */,
 				B84571EC29C0688D008D6BC2 /* ContentView.swift in Sources */,
 				B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */,
 				B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */,
 				B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */,
 				B8C03D1529CE23E100343A05 /* SubjectFilter.swift in Sources */,
+				B8904D9C29CF51B1005E73A9 /* ScoreChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +568,7 @@
 				DEVELOPMENT_TEAM = XQ4N3Y5X6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = uosF12/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -575,7 +597,7 @@
 				DEVELOPMENT_TEAM = XQ4N3Y5X6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = uosF12/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

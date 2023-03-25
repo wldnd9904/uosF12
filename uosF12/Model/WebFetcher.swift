@@ -13,7 +13,6 @@ public class WebFetcher {
     private init() {}
     
     public func getCredits(studNo:String) async throws -> Credits {
-        let ret = Credits()
         let urlComponents = URLFactory.getCreditsURLComponents(studNo: studNo)
         var requestURL = URLRequest(url: urlComponents.url!)
         requestURL.httpMethod = "POST"
