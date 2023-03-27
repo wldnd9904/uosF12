@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80C1E8E29D1E6AE00AABA13 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C1E8D29D1E6AE00AABA13 /* Registration.swift */; };
+		B80C1E9029D1EF5300AABA13 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C1E8F29D1EF5300AABA13 /* RegistrationView.swift */; };
 		B833DB6E29CD877B00498589 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB6D29CD877B00498589 /* Credits.swift */; };
 		B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7229CD9D7F00498589 /* CreditView.swift */; };
 		B833DB7529CDA4F800498589 /* CreditList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B833DB7429CDA4F800498589 /* CreditList.swift */; };
@@ -31,7 +33,7 @@
 		B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759C829C6FB8F0002FBCA /* ScoreReport.swift */; };
 		B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CA29C6FC280002FBCA /* WiseParser.swift */; };
 		B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CC29C6FD5C0002FBCA /* URLFactory.swift */; };
-		B8A1BC3A29CA021B00D6E06E /* gradecolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1BC3929CA021B00D6E06E /* gradecolor.swift */; };
+		B8A1BC3A29CA021B00D6E06E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1BC3929CA021B00D6E06E /* Color.swift */; };
 		B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A51DC429CE31A200CFEDDD /* Spinner.swift */; };
 		B8C03D1529CE23E100343A05 /* SubjectFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C03D1429CE23E100343A05 /* SubjectFilter.swift */; };
 		B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D4332129CB5F67001A17A6 /* TabBar.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B80C1E8D29D1E6AE00AABA13 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		B80C1E8F29D1EF5300AABA13 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		B833DB6D29CD877B00498589 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		B833DB7229CD9D7F00498589 /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 		B833DB7429CDA4F800498589 /* CreditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditList.swift; sourceTree = "<group>"; };
@@ -84,7 +88,7 @@
 		B89759C829C6FB8F0002FBCA /* ScoreReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReport.swift; sourceTree = "<group>"; };
 		B89759CA29C6FC280002FBCA /* WiseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseParser.swift; sourceTree = "<group>"; };
 		B89759CC29C6FD5C0002FBCA /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
-		B8A1BC3929CA021B00D6E06E /* gradecolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradecolor.swift; sourceTree = "<group>"; };
+		B8A1BC3929CA021B00D6E06E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		B8A51DC429CE31A200CFEDDD /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		B8C03D1429CE23E100343A05 /* SubjectFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFilter.swift; sourceTree = "<group>"; };
 		B8D4332129CB5F67001A17A6 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -195,9 +199,10 @@
 				B83944F329C84C0000466E1B /* Error.swift */,
 				B83944F529C84C1E00466E1B /* WebFetcher.swift */,
 				B86E771029C8B80E00E3F92E /* PortalID.swift */,
-				B8A1BC3929CA021B00D6E06E /* gradecolor.swift */,
+				B8A1BC3929CA021B00D6E06E /* Color.swift */,
 				B833DB6D29CD877B00498589 /* Credits.swift */,
 				B8904D9D29CF538C005E73A9 /* ScoreReportHelper.swift */,
+				B80C1E8D29D1E6AE00AABA13 /* Registration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			children = (
 				B8904D9929CF4E45005E73A9 /* SimulatorView.swift */,
 				B8904D9B29CF51B1005E73A9 /* ScoreChart.swift */,
+				B80C1E8F29D1EF5300AABA13 /* RegistrationView.swift */,
 			);
 			path = Simulator;
 			sourceTree = "<group>";
@@ -390,7 +396,7 @@
 				B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */,
 				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
 				B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */,
-				B8A1BC3A29CA021B00D6E06E /* gradecolor.swift in Sources */,
+				B8A1BC3A29CA021B00D6E06E /* Color.swift in Sources */,
 				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
 				B8904D9A29CF4E45005E73A9 /* SimulatorView.swift in Sources */,
@@ -398,8 +404,10 @@
 				B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */,
 				B833DB7329CD9D7F00498589 /* CreditView.swift in Sources */,
 				B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */,
+				B80C1E9029D1EF5300AABA13 /* RegistrationView.swift in Sources */,
 				B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */,
 				B8904D9E29CF538C005E73A9 /* ScoreReportHelper.swift in Sources */,
+				B80C1E8E29D1E6AE00AABA13 /* Registration.swift in Sources */,
 				B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */,
 				B84571EC29C0688D008D6BC2 /* ContentView.swift in Sources */,
 				B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */,

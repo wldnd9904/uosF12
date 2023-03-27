@@ -66,4 +66,26 @@ public class WebFetcher {
         studNo.removeFirst()
         return String(studNo)
     }
+    
+    public func getRegistration(studNo:String) async throws -> [Registration] {
+        let urlComponents = URLFactory.getCurrentSemesterURLComponents(studNo: studNo)
+        var requestURL = URLRequest(url: urlComponents.url!)
+        requestURL.httpMethod = "POST"
+        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let (data, response) = try await session.data(for:requestURL)
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
+            throw WiseError.invalidServerResponse
+        }
+        let (year,semester) = SemesterParser().getYearAndSemester(data: data)
+        
+        let urlComponents2 = URLFactory.getCourseRegistrationURLComponents(studNo: studNo, year: year, semester: semester)
+        var requestURL2 = URLRequest(url: urlComponents2.url!)
+        requestURL2.httpMethod = "POST"
+        requestURL2.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let (data2, response2) = try await session.data(for:requestURL2)
+        guard let statusCode2 = (response2 as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode2) else {
+            throw WiseError.invalidServerResponse
+        }
+        return RegistrationParser().getRegistrations(data: data2)
+    }
 }

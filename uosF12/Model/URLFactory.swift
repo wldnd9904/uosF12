@@ -47,4 +47,31 @@ public class URLFactory {
         ret.queryItems = params.map{URLQueryItem(name: $0.key, value: $0.value)}
         return ret
     }
+    
+    public static func getCurrentSemesterURLComponents(studNo: String) -> URLComponents {
+        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ucr.UcrTlsnAplyCnfmPrt.do")!
+        let params: [String: String] = [
+            "strSchYear" : "",
+            "strSmtCd": "",
+            "_code_smtList" : "CMN31",
+            "_COMMAND_" : "onload",
+            "_XML_" : "XML",
+            "_strMenuId" : "stud00205"]
+        ret.queryItems = params.map{URLQueryItem(name: $0.key, value: $0.value)}
+        return ret
+    }
+    
+    public static func getCourseRegistrationURLComponents(studNo: String, year: String, semester: String) -> URLComponents {
+        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ucr.UcrTlsnAplyCnfmPrt.do")!
+        let params: [String: String] = [
+            "strSchYear" : year,
+            "strSmtCd" : semester,
+            "strUserId" : studNo,
+            "strTitle" : "수강신청확인서",
+            "_COMMAND_" : "list",
+            "_XML_" : "XML",
+            "_strMenuId" : "stud00205"]
+        ret.queryItems = params.map{URLQueryItem(name: $0.key, value: $0.value)}
+        return ret
+    }
 }

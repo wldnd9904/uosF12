@@ -21,6 +21,7 @@ final class ModelData: ObservableObject {
     public var yearList:[Int] = []
     public var divList:[SubjectDiv] = []
     public var credits:Credits = Credits.demo
+    public var registrations:[Registration] = [Registration.demo, Registration.demo2]
     public init(){
         self.scoreReport = ScoreReport.demo
         self.gradeList = scoreReport.Subjects.map{
@@ -37,12 +38,14 @@ final class ModelData: ObservableObject {
         self.studNo = try await WebFetcher.shared.logInAndGetStudentNo(userID: userID, password: password)
         let report = try await WebFetcher.shared.getScoreReport(studNo: studNo)
         let credits = try await WebFetcher.shared.getCredits(studNo: studNo)
+        let registrations = try await WebFetcher.shared.getRegistration(studNo: studNo)
         DispatchQueue.main.async {[weak self] in
             self?.scoreReport = report
             self?.gradeList = report.Subjects.map{$0.gradeStr}.removingDuplicates().sorted()
             self?.yearList = report.Subjects.map{$0.year}.removingDuplicates().sorted()
             self?.divList = report.Subjects.map{$0.subjectDiv}.removingDuplicates().sorted()
             self?.credits = credits
+            self?.registrations = registrations
         }
     }
 }

@@ -172,7 +172,7 @@ class CreditsParser : NSObject, XMLParserDelegate {
                     credits.GE = draftCreditItem!
                 } else if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name == "전공" {
                     credits.major = draftCreditItem!
-                } else if draftCreditItem!.name != "전공" && (draftCreditItem!.name.contains("전공") || draftCreditItem!.name.contains("일반")){
+                } else if draftCreditItem!.name != "전공" && (draftCreditItem!.name.contains("전공")){
                     credits.major.child.append(draftCreditItem!)
                 } else if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name != "교양" && draftCreditItem!.name.contains("교양"){
                     credits.GE.child.append(draftCreditItem!)
@@ -186,6 +186,68 @@ class CreditsParser : NSObject, XMLParserDelegate {
                 }
                 creditItemDictionary = [:]
             }
+        }
+    }
+}
+
+class SemesterParser : NSObject, XMLParserDelegate {
+    var year = ""
+    var semester = ""
+    var tagname = ""
+    
+    func getYearAndSemester(data: Data) -> (String,String) {
+        let xmlParser = XMLParser(data: data)
+        xmlParser.delegate = self
+        xmlParser.parse()
+        return (year,semester)
+    }
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        tagname = elementName
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let value = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value == "" {return}
+        if tagname == "strSmtCd" {
+            semester = value
+        } else if tagname == "strSchYear" {
+            year = value
+        }
+    }
+}
+
+class RegistrationParser : NSObject, XMLParserDelegate {
+    var ret:[Registration] = []
+    var draftRegistraion:Registration = Registration()
+    var tagname = ""
+    
+    func getRegistrations(data: Data) -> [Registration] {
+        ret = []
+        let xmlParser = XMLParser(data: data)
+        xmlParser.delegate = self
+        xmlParser.parse()
+        return ret
+    }
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        tagname = elementName
+        if tagname == "list" {
+            draftRegistraion = Registration()
+        }
+    }
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "list" {
+            ret.append(draftRegistraion)
+        }
+    }
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let value = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value == "" {return}
+        if tagname == "curi_nm" {
+            draftRegistraion.name = value
+        } else if tagname == "pnt" {
+            draftRegistraion.pnt = Int(value) ?? 1
+        } else if tagname == "cert_detl_area_nm" {
+            draftRegistraion.isMajor = value.contains("전공")
         }
     }
 }

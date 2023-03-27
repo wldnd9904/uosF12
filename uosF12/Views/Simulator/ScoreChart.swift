@@ -15,6 +15,8 @@ extension Character {
 struct ScoreChart: View {
     @EnvironmentObject var modelData:ModelData
     @State private var selected:Int? = nil
+    @Binding var expectedAllAvg:Float
+    @Binding var expectedMajorAvg:Float
     var major: [Subject] {
         modelData.scoreReport.Subjects.filter{
             [SubjectDiv.A03,SubjectDiv.A04,SubjectDiv.A05].contains($0.subjectDiv)
@@ -24,27 +26,18 @@ struct ScoreChart: View {
     var body: some View {
         Chart{
             ForEach(ScoreReportHelper.halfGroupedSubjects(subjects: modelData.scoreReport.Subjects), id:\.[0].id) {subjects in
-                LineMark(
-                    x:.value("학기","\(subjects[0].year)년\n\(subjects[0].semester.Half.rawValue)"),
-                    y:.value("평점",ScoreReportHelper.averageGrade(subjects))
-                )
-                .foregroundStyle(by:.value("구분","전체"))
-                .symbol(by:.value("구분","전체"))
+                MyLineMark(x: "`\(subjects[0].year-2000)년\n\(subjects[0].semester.Half.rawValue)", y: ScoreReportHelper.averageGrade(subjects), div: "전체")
             }
-            .interpolationMethod(.catmullRom)
-            .lineStyle(StrokeStyle(lineWidth: 3))
-            .symbolSize(100)
+            MyLineMark(x: "이번\n학기", y: expectedAllAvg, div: "전체")
+            MyPointMark(x: "이번\n학기", y: expectedAllAvg, div: "전체")
+            
             ForEach(ScoreReportHelper.halfGroupedSubjects(subjects: major), id:\.[0].id) {subjects in
-                LineMark(
-                    x:.value("학기","\(subjects[0].year)년\n\(subjects[0].semester.Half.rawValue)"),
-                    y:.value("평점",ScoreReportHelper.averageGrade(subjects))
-                )
-                .foregroundStyle(by:.value("구분", "전공"))
-                .symbol(by:.value("구분","전공"))
+                MyLineMark(x: "`\(subjects[0].year-2000)년\n\(subjects[0].semester.Half.rawValue)", y: ScoreReportHelper.averageGrade(subjects), div: "전공")
             }
-            .interpolationMethod(.catmullRom)
-            .lineStyle(StrokeStyle(lineWidth: 3))
-            .symbolSize(100)
+            
+            MyLineMark(x: "이번\n학기", y: expectedMajorAvg, div: "전공")
+            MyPointMark(x: "이번\n학기", y: expectedMajorAvg, div: "전공")
+            
         }
         .chartForegroundStyleScale([
             "전공": .blue,
@@ -69,11 +62,45 @@ struct ScoreChart: View {
 struct ScoreChart_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            ScoreChart()
+            ScoreChart(expectedAllAvg: .constant(0.0), expectedMajorAvg: .constant(4.5))
                 .environmentObject(ModelData())
                 .padding(.horizontal)
                 .frame(height:200)
             Spacer()
         }
+    }
+}
+
+struct MyLineMark: ChartContent {
+    let x: String
+    let y: Float
+    let div: String
+    var body: some ChartContent {
+        LineMark(
+            x:.value("학기",x),
+            y:.value("평점",y)
+        )
+        .foregroundStyle(by:.value("구분",div))
+        .symbol(by:.value("구분",div))
+        .interpolationMethod(.catmullRom)
+        .lineStyle(StrokeStyle(lineWidth: 3))
+        .symbolSize(100)
+    }
+}
+
+struct MyPointMark: ChartContent {
+    let x: String
+    let y: Float
+    let div: String
+    var body: some ChartContent {
+        PointMark(
+            x:.value("학기",x),
+            y:.value("평점",y)
+        )
+        .foregroundStyle(.yellow)
+        .symbol(by:.value("구분",div))
+        .interpolationMethod(.catmullRom)
+        .lineStyle(StrokeStyle(lineWidth: 3))
+        .symbolSize(100)
     }
 }
