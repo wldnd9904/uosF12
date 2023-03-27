@@ -31,7 +31,7 @@
 		B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759C829C6FB8F0002FBCA /* ScoreReport.swift */; };
 		B89759CB29C6FC280002FBCA /* WiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CA29C6FC280002FBCA /* WiseParser.swift */; };
 		B89759CD29C6FD5C0002FBCA /* URLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89759CC29C6FD5C0002FBCA /* URLFactory.swift */; };
-		B8A1BC3A29CA021B00D6E06E /* gradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1BC3929CA021B00D6E06E /* gradeColor.swift */; };
+		B8A1BC3A29CA021B00D6E06E /* gradecolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1BC3929CA021B00D6E06E /* gradecolor.swift */; };
 		B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A51DC429CE31A200CFEDDD /* Spinner.swift */; };
 		B8C03D1529CE23E100343A05 /* SubjectFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C03D1429CE23E100343A05 /* SubjectFilter.swift */; };
 		B8D4332229CB5F67001A17A6 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D4332129CB5F67001A17A6 /* TabBar.swift */; };
@@ -84,7 +84,7 @@
 		B89759C829C6FB8F0002FBCA /* ScoreReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReport.swift; sourceTree = "<group>"; };
 		B89759CA29C6FC280002FBCA /* WiseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseParser.swift; sourceTree = "<group>"; };
 		B89759CC29C6FD5C0002FBCA /* URLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFactory.swift; sourceTree = "<group>"; };
-		B8A1BC3929CA021B00D6E06E /* gradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradeColor.swift; sourceTree = "<group>"; };
+		B8A1BC3929CA021B00D6E06E /* gradecolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradecolor.swift; sourceTree = "<group>"; };
 		B8A51DC429CE31A200CFEDDD /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		B8C03D1429CE23E100343A05 /* SubjectFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFilter.swift; sourceTree = "<group>"; };
 		B8D4332129CB5F67001A17A6 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 				B83944F329C84C0000466E1B /* Error.swift */,
 				B83944F529C84C1E00466E1B /* WebFetcher.swift */,
 				B86E771029C8B80E00E3F92E /* PortalID.swift */,
-				B8A1BC3929CA021B00D6E06E /* gradeColor.swift */,
+				B8A1BC3929CA021B00D6E06E /* gradecolor.swift */,
 				B833DB6D29CD877B00498589 /* Credits.swift */,
 				B8904D9D29CF538C005E73A9 /* ScoreReportHelper.swift */,
 			);
@@ -390,7 +390,7 @@
 				B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */,
 				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
 				B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */,
-				B8A1BC3A29CA021B00D6E06E /* gradeColor.swift in Sources */,
+				B8A1BC3A29CA021B00D6E06E /* gradecolor.swift in Sources */,
 				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
 				B8904D9A29CF4E45005E73A9 /* SimulatorView.swift in Sources */,
