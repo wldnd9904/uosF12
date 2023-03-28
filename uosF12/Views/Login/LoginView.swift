@@ -53,6 +53,9 @@ struct LoginView: View {
                 focusField = .pw
             }
             if modelData.studNo != "" {
+                userID = ""
+                password = ""
+                errorMessage = ""
                 loggedIn = true
                 focusField = nil
                 UIApplication.shared.endEditing()
@@ -141,7 +144,6 @@ struct LoginView: View {
             }
             .padding()
             Spinner()
-                .backgroundStyle(.background)
                 .opacity(loggingIn ? 0.7: 0)
                 .animation(.spring(), value:loggingIn)
         }

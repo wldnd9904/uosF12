@@ -8,7 +8,7 @@ import SwiftUI
 
 enum Tab: String, CaseIterable {
     case scoreReport = "list.dash"
-    case simulator = "atom"
+    case simulator = "questionmark.bubble"
     case f12 = "textformat.12"
     case credits = "list.bullet.clipboard"
     case settings = "gearshape"

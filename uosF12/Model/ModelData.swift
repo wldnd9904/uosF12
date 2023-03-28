@@ -48,4 +48,14 @@ final class ModelData: ObservableObject {
             self?.registrations = registrations
         }
     }
+    public func logout() async throws{
+        try await WebFetcher.shared.logout()
+        self.studNo = ""
+        self.scoreReport = ScoreReport.demo
+        self.gradeList = []
+        self.yearList = []
+        self.divList = []
+        self.credits = Credits.demo
+        self.registrations = [Registration.demo, Registration.demo2]
+    }
 }

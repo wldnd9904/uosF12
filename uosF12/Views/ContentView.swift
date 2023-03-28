@@ -25,7 +25,7 @@ struct ContentView: View {
                                 .tag(Tab.f12)
                             CreditList()
                                 .tag(Tab.credits)
-                            Text("TODO")
+                            SettingsView(loggedIn: $loggedIn)
                                 .tag(Tab.settings)
                         }
                         .tabViewStyle(.page)

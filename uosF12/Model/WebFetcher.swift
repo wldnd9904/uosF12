@@ -88,4 +88,21 @@ public class WebFetcher {
         }
         return RegistrationParser().getRegistrations(data: data2)
     }
+    
+    public func logout() async throws {
+        let logoutURLComponents = URLFactory.getLogoutURLComponents()
+        var requestURL = URLRequest(url: logoutURLComponents.url!)
+        requestURL.httpMethod = "POST"
+        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let (data, response) = try await session.data(for:requestURL)
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
+            throw WiseError.invalidServerResponse
+        }
+        guard let resultString = String(data: data,encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0422))), resultString != "" else {
+            throw WiseError.dataMissing
+        }
+        guard resultString.contains("비밀번호") else {
+                throw WiseError.unknown
+        }
+    }
 }
