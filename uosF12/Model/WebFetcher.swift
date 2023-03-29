@@ -14,41 +14,21 @@ public class WebFetcher {
     
     public func getCredits(studNo:String) async throws -> Credits {
         let urlComponents = URLFactory.getCreditsURLComponents(studNo: studNo)
-        var requestURL = URLRequest(url: urlComponents.url!)
-        requestURL.httpMethod = "POST"
-        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let (data, response) = try await session.data(for:requestURL)
-        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
-            throw WiseError.invalidServerResponse
-        }
+        let data = try await POST(urlComponents)
         return CreditsParser().getCredits(data: data)
     }
     
-    
     public func getScoreReport(studNo:String) async throws -> ScoreReport {
         let urlComponents = URLFactory.getScoreReportURLComponents(studNo: studNo)
-        var requestURL = URLRequest(url: urlComponents.url!)
-        requestURL.httpMethod = "POST"
-        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let (data, response) = try await session.data(for:requestURL)
-        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
-            throw WiseError.invalidServerResponse
-        }
+        let data = try await POST(urlComponents)
         return ScoreReportParser().getScoreReport(data: data)
     }
     
     public func logInAndGetStudentNo(userID:String, password:String) async throws -> String {
-        let loginURLComponents = URLFactory.getLoginURLComponents(userID:userID, password: password)
-        var requestURL = URLRequest(url: loginURLComponents.url!)
-        requestURL.httpMethod = "POST"
-        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let (data, response) = try await session.data(for:requestURL)
-        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
-            throw WiseError.invalidServerResponse
-        }
-        guard let resultString = String(data: data,encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0422))), resultString != "" else {
-            throw WiseError.dataMissing
-        }
+        let urlComponents = URLFactory.getLoginURLComponents(userID:userID, password: password)
+        let data = try await POST(urlComponents)
+        let resultString = try getString(data)
+        
         guard resultString.contains("로그아웃") else {
             if resultString.contains("잘못된 로그인 정보") || resultString.contains("입력하지") {
                 throw WiseError.loginFailed
@@ -66,9 +46,42 @@ public class WebFetcher {
         studNo.removeFirst()
         return String(studNo)
     }
+    public func getCurrentYearAndSemester(studNo:String) async throws -> (String, String) {
+            let urlComponents = URLFactory.getCurrentSemesterURLComponents(studNo: studNo)
+            let data = try await POST(urlComponents)
+            return SemesterParser().getYearAndSemester(data: data)
+    }
     
-    public func getRegistration(studNo:String) async throws -> [Registration] {
-        let urlComponents = URLFactory.getCurrentSemesterURLComponents(studNo: studNo)
+    public func getRegistration(studNo:String, year:String, semester:String) async throws -> [Registration] {
+        let urlComponents = URLFactory.getCourseRegistrationURLComponents(studNo: studNo, year: year, semester: semester)
+        let data = try await POST(urlComponents)
+        return RegistrationParser().getRegistrations(data: data)
+    }
+    
+    public func getF12Availability() async throws -> Bool {
+        let urlComponents = URLFactory.getF12AvailabilityURLComponents()
+        let data = try await POST(urlComponents)
+        let resultString = try getString(data)
+        return !resultString.contains("기간이 아닙니다.")
+    }
+    
+    public func getF12(studNo:String, year:String, semester:String) async throws -> String {
+        let urlComponents = URLFactory.getF12URLComponents(studNo: studNo, year: year, semester: semester)
+        let data = try await POST(urlComponents)
+        let resultString = try getString(data)
+        return resultString
+    }
+    
+    public func logout() async throws {
+        let urlComponents = URLFactory.getLogoutURLComponents()
+        let data = try await POST(urlComponents)
+        let resultString = try getString(data)
+        guard resultString.contains("비밀번호") else {
+                throw WiseError.unknown
+        }
+    }
+    
+    func POST(_ urlComponents: URLComponents) async throws -> Data {
         var requestURL = URLRequest(url: urlComponents.url!)
         requestURL.httpMethod = "POST"
         requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -76,33 +89,13 @@ public class WebFetcher {
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
             throw WiseError.invalidServerResponse
         }
-        let (year,semester) = SemesterParser().getYearAndSemester(data: data)
-        
-        let urlComponents2 = URLFactory.getCourseRegistrationURLComponents(studNo: studNo, year: year, semester: semester)
-        var requestURL2 = URLRequest(url: urlComponents2.url!)
-        requestURL2.httpMethod = "POST"
-        requestURL2.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let (data2, response2) = try await session.data(for:requestURL2)
-        guard let statusCode2 = (response2 as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode2) else {
-            throw WiseError.invalidServerResponse
-        }
-        return RegistrationParser().getRegistrations(data: data2)
+        return data
     }
     
-    public func logout() async throws {
-        let logoutURLComponents = URLFactory.getLogoutURLComponents()
-        var requestURL = URLRequest(url: logoutURLComponents.url!)
-        requestURL.httpMethod = "POST"
-        requestURL.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let (data, response) = try await session.data(for:requestURL)
-        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(statusCode) else {
-            throw WiseError.invalidServerResponse
-        }
+    func getString(_ data:Data) throws -> String {
         guard let resultString = String(data: data,encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0422))), resultString != "" else {
             throw WiseError.dataMissing
         }
-        guard resultString.contains("비밀번호") else {
-                throw WiseError.unknown
-        }
+        return resultString
     }
 }

@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
@@ -14,15 +15,44 @@ extension Array where Element: Hashable {
     }
 }
 
+struct userData: Codable {
+    var userID: String = ""
+    private var _colorSchemeSetting: Int = 0
+    var colorSchemeSetting:Int {
+        get {
+            withAnimation{
+                return _colorSchemeSetting
+            }
+        }
+        set {
+            withAnimation{
+                _colorSchemeSetting = newValue
+            }
+        }
+    }
+}
+
+
 final class ModelData: ObservableObject {
     @Published public var scoreReport:ScoreReport = ScoreReport.demo
+    @Published var saved:userData = userData()
     public var studNo:String = ""
+    public var year:String = ""
+    public var semester:String = ""
     public var gradeList:[String] = []
     public var yearList:[Int] = []
     public var divList:[SubjectDiv] = []
     public var credits:Credits = Credits.demo
     public var registrations:[Registration] = [Registration.demo, Registration.demo2]
     public init(){
+        if let data = UserDefaults.standard.data(forKey: "SavedData") {
+            if let decoded = try? JSONDecoder().decode(userData.self, from: data) {
+                self.saved = decoded
+                return
+            }
+        } else {
+            self.saved = userData()
+        }
         self.scoreReport = ScoreReport.demo
         self.gradeList = scoreReport.Subjects.map{
             $0.gradeStr
@@ -38,7 +68,8 @@ final class ModelData: ObservableObject {
         self.studNo = try await WebFetcher.shared.logInAndGetStudentNo(userID: userID, password: password)
         let report = try await WebFetcher.shared.getScoreReport(studNo: studNo)
         let credits = try await WebFetcher.shared.getCredits(studNo: studNo)
-        let registrations = try await WebFetcher.shared.getRegistration(studNo: studNo)
+        (self.year, self.semester) = try await WebFetcher.shared.getCurrentYearAndSemester(studNo: studNo)
+        let registrations = try await WebFetcher.shared.getRegistration(studNo: studNo, year: year, semester: semester)
         DispatchQueue.main.async {[weak self] in
             self?.scoreReport = report
             self?.gradeList = report.Subjects.map{$0.gradeStr}.removingDuplicates().sorted()
@@ -50,12 +81,29 @@ final class ModelData: ObservableObject {
     }
     public func logout() async throws{
         try await WebFetcher.shared.logout()
-        self.studNo = ""
-        self.scoreReport = ScoreReport.demo
-        self.gradeList = []
-        self.yearList = []
-        self.divList = []
-        self.credits = Credits.demo
-        self.registrations = [Registration.demo, Registration.demo2]
+        DispatchQueue.main.async {[weak self] in
+            self?.studNo = ""
+            self?.scoreReport = ScoreReport.demo
+            self?.gradeList = []
+            self?.yearList = []
+            self?.divList = []
+            self?.credits = Credits.demo
+            self?.registrations = [Registration.demo, Registration.demo2]
+        }
+    }
+    func save() {
+        if let encoded = try? JSONEncoder().encode(saved) {
+            UserDefaults.standard.set(encoded, forKey: "SavedData")
+        }
+    }
+    var colorScheme:ColorScheme? {
+        switch(saved.colorSchemeSetting){
+        case 1:
+            return .light
+        case 2:
+            return .dark
+        default:
+            return nil
+        }
     }
 }

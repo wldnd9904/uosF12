@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct uosF12App: App {
     @StateObject var modelData:ModelData = ModelData()
+    @Environment(\.colorScheme) var systemColorScheme
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
+                .preferredColorScheme(modelData.colorScheme)
         }
     }
 }

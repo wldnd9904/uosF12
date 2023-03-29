@@ -85,4 +85,32 @@ public class URLFactory {
         ret.queryItems = params.map{URLQueryItem(name: $0.key, value: $0.value)}
         return ret
     }
+    
+    public static func getF12AvailabilityURLComponents() -> URLComponents {
+        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ugd.UgdOtcmInq.do")!
+        let params: [String: String] = [
+            "_dept_authDept" : "auth",
+            "_code_smtList": "CMN31",
+            "_COMMAND_" : "onload",
+            "_XML_" : "XML",
+            "_strMenuId" : "stud00320"]
+        ret.queryItems = []
+        _ = params.map{ret.queryItems?.append(URLQueryItem(name: $0.key, value: $0.value))}
+        return ret
+    }
+    
+    public static func getF12URLComponents(studNo: String, year: String, semester: String) -> URLComponents {
+        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ugd.UgdOtcmInq.do")!
+        let params: [String: String] = [
+            "strSchYear" : year,
+            "strSmtCd" : semester,
+            "strUserId" : studNo,
+            "strDiv" : "2",
+            "_COMMAND_" : "list",
+            "_XML_" : "XML",
+            "_strMenuId" : "stud00320"]
+        ret.queryItems = []
+        _ = params.map{ret.queryItems?.append(URLQueryItem(name: $0.key, value: $0.value))}
+        return ret
+    }
 }

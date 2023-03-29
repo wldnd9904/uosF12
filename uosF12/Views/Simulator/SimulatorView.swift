@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimulatorView: View {
     @EnvironmentObject var modelData:ModelData
-    @State private var simulatorMode:Bool = false
+    @State private var simulatorMode:Bool = true
     @State private var grades:[Float] = [4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5]
     @State private var isPasses:[Bool] = [false,false,false,false,false,false,false,false,false,false]
     private func pntSum(isOnlyMajor:Bool) -> Int {
@@ -69,6 +69,8 @@ struct SimulatorView: View {
                             .scrollIndicators(.hidden)
                         }
                     }.padding()
+            } else {
+                Text("")
             }
             Spacer()
         }

@@ -56,6 +56,8 @@ struct ScoreChart: View {
             AxisMarks(position:.leading,values:[2,3,4])
         }
         .chartYScale(domain: 1.0...5.5)
+        .animation(.spring(), value: expectedAllAvg)
+        .animation(.spring(), value: expectedMajorAvg)
     }
 }
 
