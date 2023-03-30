@@ -30,21 +30,24 @@ struct F12List: View {
     }
     var body: some View {
         ScrollView {
-            Text("전체 학점: \(modelData.f12.totalSum)학점 (\(String(format:"%.2f",modelData.f12.avg)))")
-                .bold()
-            Text("공개된 학점: \(modelData.f12.currentSum)학점 (\(String(format:"%.2f",avg)))")
-                .bold()
-            Divider()
-            ForEach(modelData.f12.items, id:\.name){ item in
-                F12ItemView(item: item)
-                    .padding(.horizontal)
+            VStack{
+                Text("전체 학점: \(modelData.f12.totalSum)학점 (\(String(format:"%.2f",modelData.f12.avg)))")
+                    .bold()
+                Text("공개된 학점: \(modelData.f12.currentSum)학점 (\(String(format:"%.2f",avg)))")
+                    .bold()
                 Divider()
+                ForEach(modelData.f12.items, id:\.name){ item in
+                    F12ItemView(item: item)
+                        .padding(.horizontal)
+                    Divider()
+                }
+                ForEach(hiddenRegistration, id:\.name) { registration in
+                    F12ItemView(item:F12Item(name:registration.name, pnt:registration.pnt, gradeStr: "비공개"))
+                        .padding(.horizontal)
+                    Divider()
+                }
             }
-            ForEach(hiddenRegistration, id:\.name) { registration in
-                F12ItemView(item:F12Item(name:registration.name, pnt:registration.pnt, gradeStr: "비공개"))
-                    .padding(.horizontal)
-                Divider()
-            }
+            .padding(.bottom,150)
         }
     }
 }

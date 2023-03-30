@@ -30,7 +30,7 @@ struct RegistrationView: View {
                 }
             }
             Spacer()
-            Picker("학점",selection: $grade){
+            Picker("등급",selection: $grade){
                 Text("A+").tag(Float(4.5))
                 Text("A0").tag(Float(4.0))
                 Text("B+").tag(Float(3.5))

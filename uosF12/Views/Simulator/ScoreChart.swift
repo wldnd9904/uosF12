@@ -18,14 +18,14 @@ struct ScoreChart: View {
     @Binding var expectedAllAvg:Float
     @Binding var expectedMajorAvg:Float
     var major: [Subject] {
-        modelData.scoreReport.Subjects.filter{
+        modelData.scoreReportCopied.Subjects.filter{
             [SubjectDiv.A03,SubjectDiv.A04,SubjectDiv.A05].contains($0.subjectDiv)
         }
     }
     
     var body: some View {
         Chart{
-            ForEach(ScoreReportHelper.halfGroupedSubjects(subjects: modelData.scoreReport.Subjects), id:\.[0].id) {subjects in
+            ForEach(ScoreReportHelper.halfGroupedSubjects(subjects: modelData.scoreReportCopied.Subjects), id:\.[0].id) {subjects in
                 MyLineMark(x: "`\(subjects[0].year-2000)년\n\(subjects[0].semester.Half.rawValue)", y: ScoreReportHelper.averageGrade(subjects), div: "전체")
             }
             MyLineMark(x: "이번\n학기", y: expectedAllAvg, div: "전체")
@@ -58,6 +58,7 @@ struct ScoreChart: View {
         .chartYScale(domain: 1.0...5.5)
         .animation(.spring(), value: expectedAllAvg)
         .animation(.spring(), value: expectedMajorAvg)
+        .animation(.spring(), value: modelData.scoreReportCopied.avg(div: ""))
     }
 }
 

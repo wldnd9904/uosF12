@@ -111,6 +111,7 @@ class ScoreReportParser : NSObject, XMLParserDelegate {
             draftSubject?.gradeStr = subjectDictionary["conv_grade"] ?? ""
             draftSubject?.valid = subjectDictionary["efft_yn"]=="Y"
             draftSubject?.retry = subjectDictionary["re_tlsn_yn"]=="Y"
+            draftSubject?.retryable = (Float(subjectDictionary["mrks"] ?? "") ?? 0) < Float(3.0)
             scoreReport.Subjects.append(draftSubject!)
             subjectDictionary = [:]
         }

@@ -20,6 +20,7 @@ struct LoginView: View {
     @State private var loggingIn:Bool = false
     @State private var errorMessage:String = ""
     @FocusState private var focusField: Field?
+    @Environment(\.colorScheme) var colorScheme
 
     enum Field: Hashable {
         case id, pw
@@ -68,7 +69,7 @@ struct LoginView: View {
         ZStack{
             VStack{
                 Spacer()
-                Image("logo_horizontal")
+                Image(colorScheme == .light ? "logo_light" : "logo_dark")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width:80, height:80)

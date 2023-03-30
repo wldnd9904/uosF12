@@ -116,6 +116,6 @@ public struct Subject: Identifiable {
     public var gradeStr:String = "F"//알파벳등급
     public var valid:Bool = false//성적유효여부
     public var retry:Bool = false//재수강여부
-
+    public var retryable:Bool = false
     public static let demo = Subject(year:2020, semester:.fall, subjectCode: "12345", korName: "마이크로프로세서및실습", engName: "Microprocessor Design and Experiment", subjectDiv: .A01, pnt:3, grade:4.0, gradeStr:"A0", valid:true, retry:true)
 }

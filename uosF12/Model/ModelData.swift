@@ -35,6 +35,7 @@ struct userData: Codable {
 
 final class ModelData: ObservableObject {
     @Published public var scoreReport:ScoreReport = ScoreReport.demo
+    @Published public var scoreReportCopied:ScoreReport = ScoreReport.demo
     @Published var saved:userData = userData()
     @Published var f12:F12 = F12()
     public var f12able:Bool = true
@@ -78,6 +79,7 @@ final class ModelData: ObservableObject {
         let f12 = try await WebFetcher.shared.getF12(studNo: studNo, year: year, semester: semester)
         DispatchQueue.main.async {[weak self] in
             self?.scoreReport = report
+            self?.scoreReportCopied = report
             self?.gradeList = report.Subjects.map{$0.gradeStr}.removingDuplicates().sorted()
             self?.yearList = report.Subjects.map{$0.year}.removingDuplicates().sorted()
             self?.divList = report.Subjects.map{$0.subjectDiv}.removingDuplicates().sorted()
