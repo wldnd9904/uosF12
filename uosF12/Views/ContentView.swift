@@ -21,7 +21,7 @@ struct ContentView: View {
                                 .tag(Tab.scoreReport)
                             SimulatorView()
                                 .tag(Tab.simulator)
-                            Text("TODO")
+                            F12View()
                                 .tag(Tab.f12)
                             CreditList()
                                 .tag(Tab.credits)

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B80731F529D3590700F3FE38 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80731F429D3590700F3FE38 /* SettingsView.swift */; };
+		B807959429D5A7DA00C3899E /* F12.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807959329D5A7DA00C3899E /* F12.swift */; };
+		B807959629D5AEDE00C3899E /* F12ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807959529D5AEDE00C3899E /* F12ItemView.swift */; };
+		B807959829D5B08A00C3899E /* F12List.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807959729D5B08A00C3899E /* F12List.swift */; };
+		B807959A29D5B12100C3899E /* F12View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807959929D5B12100C3899E /* F12View.swift */; };
 		B80C1E8E29D1E6AE00AABA13 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C1E8D29D1E6AE00AABA13 /* Registration.swift */; };
 		B80C1E9029D1EF5300AABA13 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C1E8F29D1EF5300AABA13 /* RegistrationView.swift */; };
 		B81E781E29D22A0F00F65420 /* RequiredGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81E781D29D22A0F00F65420 /* RequiredGradeView.swift */; };
@@ -60,6 +64,10 @@
 
 /* Begin PBXFileReference section */
 		B80731F429D3590700F3FE38 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B807959329D5A7DA00C3899E /* F12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F12.swift; sourceTree = "<group>"; };
+		B807959529D5AEDE00C3899E /* F12ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F12ItemView.swift; sourceTree = "<group>"; };
+		B807959729D5B08A00C3899E /* F12List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F12List.swift; sourceTree = "<group>"; };
+		B807959929D5B12100C3899E /* F12View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F12View.swift; sourceTree = "<group>"; };
 		B80C1E8D29D1E6AE00AABA13 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		B80C1E8F29D1EF5300AABA13 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		B81E781D29D22A0F00F65420 /* RequiredGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredGradeView.swift; sourceTree = "<group>"; };
@@ -134,6 +142,9 @@
 		B807959229D59CD000C3899E /* F12 */ = {
 			isa = PBXGroup;
 			children = (
+				B807959529D5AEDE00C3899E /* F12ItemView.swift */,
+				B807959729D5B08A00C3899E /* F12List.swift */,
+				B807959929D5B12100C3899E /* F12View.swift */,
 			);
 			path = F12;
 			sourceTree = "<group>";
@@ -222,6 +233,7 @@
 				B833DB6D29CD877B00498589 /* Credits.swift */,
 				B8904D9D29CF538C005E73A9 /* ScoreReportHelper.swift */,
 				B80C1E8D29D1E6AE00AABA13 /* Registration.swift */,
+				B807959329D5A7DA00C3899E /* F12.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,8 +424,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B807959629D5AEDE00C3899E /* F12ItemView.swift in Sources */,
 				B83944F429C84C0100466E1B /* Error.swift in Sources */,
 				B893C9C029C9F69A00FAB5B2 /* SubjectList.swift in Sources */,
+				B807959A29D5B12100C3899E /* F12View.swift in Sources */,
 				B833DB7529CDA4F800498589 /* CreditList.swift in Sources */,
 				B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */,
 				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
@@ -422,6 +436,7 @@
 				B8A1BC3A29CA021B00D6E06E /* Color.swift in Sources */,
 				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
 				B893C9BE29C9EF2300FAB5B2 /* SubjectView.swift in Sources */,
+				B807959829D5B08A00C3899E /* F12List.swift in Sources */,
 				B8904D9A29CF4E45005E73A9 /* SimulatorView.swift in Sources */,
 				B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */,
 				B8A51DC529CE31A200CFEDDD /* Spinner.swift in Sources */,
@@ -437,6 +452,7 @@
 				B89759C929C6FB8F0002FBCA /* ScoreReport.swift in Sources */,
 				B83944F629C84C1E00466E1B /* WebFetcher.swift in Sources */,
 				B84571EA29C0688D008D6BC2 /* uosF12App.swift in Sources */,
+				B807959429D5A7DA00C3899E /* F12.swift in Sources */,
 				B8C03D1529CE23E100343A05 /* SubjectFilter.swift in Sources */,
 				B8904D9C29CF51B1005E73A9 /* ScoreChart.swift in Sources */,
 			);

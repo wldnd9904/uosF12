@@ -265,3 +265,48 @@ class RegistrationParser : NSObject, XMLParserDelegate {
     }
 }
 
+class F12Parser : NSObject, XMLParserDelegate {
+    var f12: F12 = F12()
+    var draftF12Item: F12Item = F12Item()
+    var f12ItemDictionary:[String:String] = [:]
+    var tagName = ""
+    
+    func getF12(data: Data) -> F12 {
+        f12 = F12()
+        let xmlParser = XMLParser(data: data)
+        xmlParser.delegate = self
+        xmlParser.parse()
+        return f12
+    }
+    //태그 시작
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        self.tagName = elementName
+        print(elementName)
+        if elementName == "list"{
+            draftF12Item = F12Item()
+        }
+    }
+    //태그 내용
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let value = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value == "" {return}
+        f12ItemDictionary[self.tagName] = value
+        print(value)
+    }
+    //태그 끝
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "list" {
+            if(f12.currentSum == 0) {
+                f12.currentSum = Int(f12ItemDictionary["sum_pnt"] ?? "") ?? 0
+                f12.avg = Float(f12ItemDictionary["avg_mrks"] ?? "") ?? 0
+                f12.totalSum = Int(f12ItemDictionary["tot_pnt"] ?? "") ?? 0
+            }
+            draftF12Item.name = f12ItemDictionary["curi_nm"] ?? ""
+            draftF12Item.pnt = Int(f12ItemDictionary["pnt"] ?? "") ?? 0
+            draftF12Item.gradeStr = f12ItemDictionary["conv_grade"] ?? ""
+            draftF12Item.grade = Float(f12ItemDictionary["mrks"] ?? "") ?? 0
+            f12.items.append(draftF12Item)
+            f12ItemDictionary = [:]
+        }
+    }
+}

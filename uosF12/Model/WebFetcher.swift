@@ -65,11 +65,14 @@ public class WebFetcher {
         return !resultString.contains("기간이 아닙니다.")
     }
     
-    public func getF12(studNo:String, year:String, semester:String) async throws -> String {
+    public func getF12(studNo:String, year:String, semester:String) async throws -> F12 {
         let urlComponents = URLFactory.getF12URLComponents(studNo: studNo, year: year, semester: semester)
         let data = try await POST(urlComponents)
         let resultString = try getString(data)
-        return resultString
+        if resultString.contains("세션") {
+            throw WiseError.sessionExpired
+        }
+        return F12Parser().getF12(data: data)
     }
     
     public func logout() async throws {
