@@ -16,8 +16,10 @@ struct CreditList: View {
                     .font(.headline)
                 CreditView(credit: modelData.credits.major)
                 CreditView(credit: modelData.credits.GE)
-                ForEach(modelData.credits.etc, id: \.name){
-                        CreditView(credit: $0)
+                ForEach(modelData.credits.etc, id: \.name){ credit in
+                    if(credit.cnt>0){
+                        CreditView(credit: credit)
+                    }
                 }
             }
             .padding(.bottom,200)

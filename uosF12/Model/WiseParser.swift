@@ -130,6 +130,16 @@ class CreditsParser : NSObject, XMLParserDelegate {
         let xmlParser = XMLParser(data: data)
         xmlParser.delegate = self
         xmlParser.parse()
+        //순서 이상해서 부모 못 찾은 애들 다시 순회
+        for credit in credits.etc {
+            if(credit.parent != ""){
+                let parentCand = (credits.major.child + credits.GE.child).filter{$0.name.contains(credit.parent)}
+                if !parentCand.isEmpty {
+                    parentCand[0].child.append(credit)
+                    credits.etc = credits.etc.filter{$0 !== credit}
+                }
+            }
+        }
         return credits
     }
     //태그 시작
@@ -162,24 +172,27 @@ class CreditsParser : NSObject, XMLParserDelegate {
                 credits.max = Int(creditItemDictionary["new_max_pnt"] ?? "") ?? 0
                 credits.cnt = Int(creditItemDictionary["cnt"] ?? "") ?? 0
             } else {
+                draftCreditItem!.parent = creditItemDictionary["grdt_cmp_std_nm"] ?? ""
                 draftCreditItem!.name = creditItemDictionary["cmp_div_nm"] ?? ""
                 draftCreditItem!.pnt = Int(creditItemDictionary["get_pnt"] ?? "") ?? 0
                 draftCreditItem!.min = Int(creditItemDictionary["new_min_pnt"] ?? "") ?? 0
                 draftCreditItem!.max = Int(creditItemDictionary["new_max_pnt"] ?? "") ?? 0
                 draftCreditItem!.cnt = Int(creditItemDictionary["cnt"] ?? "") ?? 0
                 credits.CreditItems.append(draftCreditItem!)
-                if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name == "교양" {
+                if draftCreditItem!.parent == "" && draftCreditItem!.name == "교양" {
                     credits.GE = draftCreditItem!
-                } else if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name == "전공" {
+                } else if draftCreditItem!.parent == "" && draftCreditItem!.name == "전공" {
                     credits.major = draftCreditItem!
                 } else if draftCreditItem!.name != "전공" && (draftCreditItem!.name.contains("전공")){
                     credits.major.child.append(draftCreditItem!)
-                } else if creditItemDictionary["grdt_cmp_std_nm"] == nil && draftCreditItem!.name != "교양" && draftCreditItem!.name.contains("교양"){
+                } else if draftCreditItem!.parent == "" && draftCreditItem!.name != "교양" && draftCreditItem!.name.contains("교양"){
                     credits.GE.child.append(draftCreditItem!)
-                } else if creditItemDictionary["grdt_cmp_std_nm"] != nil {
-                    let parentCand = credits.GE.child.filter{$0.name.contains(creditItemDictionary["grdt_cmp_std_nm"]!)}
+                } else if draftCreditItem!.parent != "" {
+                    let parentCand = (credits.major.child + credits.GE.child).filter{$0.name.contains(draftCreditItem!.parent)}
                     if !parentCand.isEmpty {
                         parentCand[0].child.append(draftCreditItem!)
+                    } else {
+                        credits.etc.append(draftCreditItem!)
                     }
                 } else {
                     credits.etc.append(draftCreditItem!)
@@ -251,3 +264,4 @@ class RegistrationParser : NSObject, XMLParserDelegate {
         }
     }
 }
+

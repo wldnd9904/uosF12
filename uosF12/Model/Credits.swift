@@ -26,6 +26,7 @@ public class Credits {
 }
 
 public class CreditItem {
+    var parent:String = ""
     var name: String = ""
     var min: Int = 0
     var max: Int = 0

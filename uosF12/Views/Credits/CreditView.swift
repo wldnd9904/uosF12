@@ -30,7 +30,7 @@ struct CreditView: View {
                             .labelStyle(.iconOnly)
                             .imageScale(.large)
                             .rotationEffect(.degrees(showDetail ? 90 : 0))
-                            .padding(10)
+                            .padding(.horizontal,10)
                     }
                 }
             }
@@ -43,6 +43,7 @@ struct CreditView: View {
                 }
             }
         }
+        .padding(.vertical,10)
     }
 }
 struct CreditView_Previews: PreviewProvider {

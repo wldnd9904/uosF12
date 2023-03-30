@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var loggedIn:Bool = false
     var body: some View {
         ZStack{
-            if loggedIn{
+            if loggedIn {
                 NavigationStack{
                     ZStack{
                         TabView(selection: $selectedTab) {
@@ -36,6 +36,9 @@ struct ContentView: View {
                     }
                     .navigationTitle(selectedTab.name)
                     .navigationBarTitleDisplayMode(.inline)
+                }
+                .onAppear{
+                    selectedTab = .scoreReport
                 }
             }
             LoginView(loggedIn: $loggedIn)
