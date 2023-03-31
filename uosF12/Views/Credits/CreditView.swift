@@ -16,7 +16,7 @@ struct CreditView: View {
                 Text("\(credit.name): \(credit.cnt)개, \(credit.pnt)/\(credit.min)학점")
                     .font(.headline)
                 if credit.max > 0 {
-                    Text("최대이수제한: \(credit.max)학점")
+                    Text("(최대 \(credit.max)학점)")
                         .font(.headline)
                 }
                 Spacer()
