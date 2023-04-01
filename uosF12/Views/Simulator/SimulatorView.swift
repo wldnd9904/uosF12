@@ -52,7 +52,8 @@ struct SimulatorView: View {
                     
                     Text("전체: \(expectedOverallSum(isOnlyMajor:false))학점 (\(String(format:"%.2f",expectedOverallAvg(isOnlyMajor: false)))) 이번학기: \(pntSum(isOnlyMajor:false))학점 (\(String(format:"%.2f",expectedAvg(isOnlyMajor:false))))")
                         .bold()
-                }.opacity(selectedSemester.x == nil ? 1.0 : 0.0)
+                }
+                .opacity(selectedSemester.x == nil ? 1.0 : 0.0)
                 
                 ScoreChart(expectedAllAvg: .constant(expectedAvg(isOnlyMajor: false)), expectedMajorAvg: .constant(expectedAvg(isOnlyMajor: true)), selectedSemester: $selectedSemester)
                     .frame(height:240)
@@ -103,39 +104,47 @@ struct SimulatorView: View {
                     Text("재수강 예측하기").tag(true)
                 }
                 .pickerStyle(.segmented)
-                if !simulatorMode {
-                    if(modelData.registrations.isEmpty){
-                        Text("수강신청한 과목이 없습니다.")
-                            .padding()
-                    } else {
-                        ScrollView{
-                            VStack{
-                                ForEach(Array(modelData.registrations.enumerated()), id:\.offset) { index, item in
-                                    RegistrationView(registration: item, grade: $grades[index], ispass: $isPasses[index])
+                VStack{
+                    if !simulatorMode {
+                        if(modelData.registrations.isEmpty){
+                            Text("수강신청한 과목이 없습니다.")
+                                .padding()
+                        } else {
+                            ScrollView{
+                                VStack{
+                                    ForEach(Array(modelData.registrations.enumerated()), id:\.offset) { index, item in
+                                        RegistrationView(registration: item, grade: $grades[index], ispass: $isPasses[index])
+                                    }
                                 }
+                                .padding(.bottom,100)
                             }
-                            .padding(.bottom,100)
-                        }
-                        .scrollIndicators(.hidden)
-                        .padding()
-                    }
-                } else {
-                    if(modelData.scoreReportCopied.Subjects.filter{$0.retryable}.isEmpty){
-                        Text("재수강 가능한 과목이 없습니다.")
+                            .scrollIndicators(.hidden)
                             .padding()
-                    } else {
-                        ScrollView{
-                            VStack{
-                                ForEach($modelData.scoreReportCopied.Subjects, id:\.id) { subject in
-                                    RetryView(subject: subject)
-                                }
-                            }
-                            .padding(.bottom,100)
                         }
-                        .scrollIndicators(.hidden)
-                        .padding()
+                    } else {
+                        if(modelData.scoreReportCopied.Subjects.filter{$0.retryable}.isEmpty){
+                            Text("재수강 가능한 과목이 없습니다.")
+                                .padding()
+                        } else {
+                            ScrollView{
+                                VStack{
+                                    ForEach($modelData.scoreReportCopied.Subjects, id:\.id) { subject in
+                                        RetryView(subject: subject)
+                                    }
+                                }
+                                .padding(.bottom,100)
+                            }
+                            .scrollIndicators(.hidden)
+                            .padding()
+                        }
                     }
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            selectedSemester = (nil,nil,nil)
+                        }
+                )
             }
             Spacer()
         }

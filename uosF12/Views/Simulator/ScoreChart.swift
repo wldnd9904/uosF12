@@ -34,8 +34,12 @@ struct ScoreChart: View {
         (x:"`\(subjects[0].year-2000)년\n\(subjects[0].semester.Half.rawValue)", y: ScoreReportHelper.averageGrade(subjects))
         } + [(x: "이번\n학기", y:expectedMajorAvg)]
     }
-    func findElement(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy){
+    func findElement(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy, cancelable: Bool){
         let ret = proxy.value(at: location, as:(String,Float).self)
+        if cancelable && ret?.0 == selectedSemester.x {
+            selectedSemester = (x:nil, all:nil, major:nil)
+            return
+        }
         let selectedAll:[(x:String, y:Float)] = chartAllData.filter{$0.x == ret?.0}
         let selectedMajor:[(x:String, y:Float)] = chartMajorData.filter{$0.x == ret?.0}
         if !selectedAll.isEmpty || !selectedMajor.isEmpty {
@@ -72,7 +76,7 @@ struct ScoreChart: View {
                                     x: value.location.x - origin.x,
                                     y: value.location.y - origin.y
                                 )
-                                findElement(location: location, proxy: proxy, geometry: geometry)
+                                findElement(location: location, proxy: proxy, geometry: geometry, cancelable:true)
                             }
                             .exclusively(
                                 before: DragGesture()
@@ -83,7 +87,7 @@ struct ScoreChart: View {
                                             x: value.location.x - origin.x,
                                             y: value.location.y - origin.y
                                         )
-                                        findElement(location: location, proxy: proxy, geometry: geometry)
+                                        findElement(location: location, proxy: proxy, geometry: geometry, cancelable: false)
                                     }
                             )
                     )
