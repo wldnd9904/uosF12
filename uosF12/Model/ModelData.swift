@@ -77,6 +77,7 @@ final class ModelData: ObservableObject {
         let f12able = try await WebFetcher.shared.getF12Availability()
         //let f12able = true
         let f12 = try await WebFetcher.shared.getF12(studNo: studNo, year: year, semester: semester)
+        //let f12 = F12.demo
         DispatchQueue.main.async {[weak self] in
             self?.scoreReport = report
             self?.scoreReportCopied = report

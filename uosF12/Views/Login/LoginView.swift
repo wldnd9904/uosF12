@@ -74,7 +74,7 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width:80, height:80)
                     .padding(.bottom,75)
-                TextField("ID", text: $userID)
+                TextField("포털 아이디", text: $userID)
                     .onSubmit {
                         focusField = .pw
                     }
@@ -92,7 +92,7 @@ struct LoginView: View {
                     }
                     .padding(.bottom, 20)
                 
-                SecureField("PW", text: $password)
+                SecureField("비밀번호", text: $password)
                     .onSubmit {
                         if userID == "" {
                             focusField = .id

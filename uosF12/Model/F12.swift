@@ -12,7 +12,7 @@ public struct F12 {
     var totalSum:Int = 0
     var avg:Float = 0.0
     var items:[F12Item] = []
-    static let demo = F12(currentSum: 6, totalSum: 12, avg: 4.33, items: [uosF12.F12Item(name: "컴파일러구성", pnt: 3, grade: 4.5, gradeStr: "A+"), uosF12.F12Item(name: "화일처리론", pnt: 3, grade: 4.5, gradeStr: "A+")])
+    static let demo = F12(currentSum: 6, totalSum: 9, avg: 4.33, items: [uosF12.F12Item(name: "컴파일러구성", pnt: 3, grade: 4.5, gradeStr: "A+"), uosF12.F12Item(name: "화일처리론", pnt: 3, grade: 4.5, gradeStr: "A+")])
 }
 
 public struct F12Item {
