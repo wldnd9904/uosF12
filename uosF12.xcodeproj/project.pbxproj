@@ -27,7 +27,6 @@
 		B84571FB29C0688E008D6BC2 /* uosF12Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84571FA29C0688E008D6BC2 /* uosF12Tests.swift */; };
 		B845720529C0688E008D6BC2 /* uosF12UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845720429C0688E008D6BC2 /* uosF12UITests.swift */; };
 		B845720729C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845720629C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift */; };
-		B845721829C070E6008D6BC2 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845721729C070E6008D6BC2 /* WebView.swift */; };
 		B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8493D1929C44FE100CB772C /* ModelData.swift */; };
 		B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E770E29C8B78400E3F92E /* LoginView.swift */; };
 		B86E771129C8B80E00E3F92E /* PortalID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E771029C8B80E00E3F92E /* PortalID.swift */; };
@@ -87,7 +86,6 @@
 		B845720429C0688E008D6BC2 /* uosF12UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uosF12UITests.swift; sourceTree = "<group>"; };
 		B845720629C0688E008D6BC2 /* uosF12UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uosF12UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B845721329C068D1008D6BC2 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		B845721729C070E6008D6BC2 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		B8493D1929C44FE100CB772C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		B86E770E29C8B78400E3F92E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B86E771029C8B80E00E3F92E /* PortalID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalID.swift; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 				B84571E929C0688D008D6BC2 /* uosF12App.swift */,
 				B84571ED29C0688E008D6BC2 /* Assets.xcassets */,
 				B84571EF29C0688E008D6BC2 /* Preview Content */,
-				B845721729C070E6008D6BC2 /* WebView.swift */,
 			);
 			path = uosF12;
 			sourceTree = "<group>";
@@ -430,7 +427,6 @@
 				B807959A29D5B12100C3899E /* F12View.swift in Sources */,
 				B833DB7529CDA4F800498589 /* CreditList.swift in Sources */,
 				B86E770F29C8B78400E3F92E /* LoginView.swift in Sources */,
-				B845721829C070E6008D6BC2 /* WebView.swift in Sources */,
 				B8493D1A29C44FE100CB772C /* ModelData.swift in Sources */,
 				B8A1BC3A29CA021B00D6E06E /* Color.swift in Sources */,
 				B833DB6E29CD877B00498589 /* Credits.swift in Sources */,
