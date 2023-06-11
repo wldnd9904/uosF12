@@ -48,6 +48,16 @@ struct SettingsView: View {
                 Spacer()
                 Text("\(modelData.studNo)")
             }
+            VStack{
+                Text("본 앱은 서울시립대학교 대학행정정보시스템의 API를 비상업적 목적으로 사용합니다.")
+                    .padding(.top,20)
+                    .padding(.bottom,5)
+                Text("This application uses API of University Of Seoul Wise System for non-commercial purpose.").foregroundColor(.gray)
+                Image("logo_vertical")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width:200, height:200)
+            }
         }
         .listStyle(.inset)
         .padding()

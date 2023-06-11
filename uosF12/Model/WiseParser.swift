@@ -222,7 +222,7 @@ class SemesterParser : NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let value = string.trimmingCharacters(in: .whitespacesAndNewlines)
         if value == "" {return}
-        if tagname == "strSmtCd" {
+        if tagname == "strSmt" {
             semester = value
         } else if tagname == "strSchYear" {
             year = value

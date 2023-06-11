@@ -60,14 +60,13 @@ public class URLFactory {
     }
     
     public static func getCurrentSemesterURLComponents(studNo: String) -> URLComponents {
-        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ucr.UcrTlsnAplyCnfmPrt.do")!
+        var ret:URLComponents = URLComponents(string: "https://wise.uos.ac.kr/uosdoc/ugd.UgdTlsnOtcmInq.do")!
         let params: [String: String] = [
-            "strSchYear" : "",
-            "strSmtCd": "",
+            "_dept_authDept": "auth",
             "_code_smtList" : "CMN31",
             "_COMMAND_" : "onload",
             "_XML_" : "XML",
-            "_strMenuId" : "stud00205"]
+            "_strMenuId" : "stud00310"]
         ret.queryItems = params.map{URLQueryItem(name: $0.key, value: $0.value)}
         return ret
     }
