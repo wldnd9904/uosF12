@@ -70,24 +70,33 @@ final class ModelData: ObservableObject {
     
     public func login(userID:String, password:String) async throws {
         self.studNo = try await WebFetcher.shared.logInAndGetStudentNo(userID: userID, password: password)
-        let report = try await WebFetcher.shared.getScoreReport(studNo: studNo)
-        let credits = try await WebFetcher.shared.getCredits(studNo: studNo)
         (self.year, self.semester) = try await WebFetcher.shared.getCurrentYearAndSemester(studNo: studNo)
-        let registrations = try await WebFetcher.shared.getRegistration(studNo: studNo, year: year, semester: semester)
-        let f12able = try await WebFetcher.shared.getF12Availability()
-        //let f12able = true
-        let f12 = try await WebFetcher.shared.getF12(studNo: studNo, year: year, semester: semester)
-        //let f12 = F12.demo
-        DispatchQueue.main.async {[weak self] in
-            self?.scoreReport = report
-            self?.scoreReportCopied = report
-            self?.gradeList = report.Subjects.map{$0.gradeStr}.removingDuplicates().sorted()
-            self?.yearList = report.Subjects.map{$0.year}.removingDuplicates().sorted()
-            self?.divList = report.Subjects.map{$0.subjectDiv}.removingDuplicates().sorted()
-            self?.credits = credits
-            self?.registrations = registrations
-            self?.f12able = f12able
-            self?.f12 = f12
+        do{
+            // Execute tasks concurrently
+            async let report = WebFetcher.shared.getScoreReport(studNo: studNo)
+            async let credits = WebFetcher.shared.getCredits(studNo: studNo)
+            async let registrations = WebFetcher.shared.getRegistration(studNo: studNo, year: year, semester: semester)
+            async let f12 =  WebFetcher.shared.getF12(studNo: studNo, year: year, semester: semester)
+            async let f12able = WebFetcher.shared.getF12Availability()
+
+            // Wait for all tasks to complete
+            let reportResult = try await report
+            let creditsResult = try await credits
+            let registrationsResult = try await registrations
+            let f12Result = try await f12
+            let f12ableResult = try await f12able
+            
+            DispatchQueue.main.async {[weak self] in
+                self?.scoreReport = reportResult
+                self?.scoreReportCopied = reportResult
+                self?.gradeList = reportResult.Subjects.map{$0.gradeStr}.removingDuplicates().sorted()
+                self?.yearList = reportResult.Subjects.map{$0.year}.removingDuplicates().sorted()
+                self?.divList = reportResult.Subjects.map{$0.subjectDiv}.removingDuplicates().sorted()
+                self?.credits = creditsResult
+                self?.registrations = registrationsResult
+                self?.f12able = f12ableResult
+                self?.f12 = f12Result
+            }
         }
     }
     
