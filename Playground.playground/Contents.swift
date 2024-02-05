@@ -1,4 +1,5 @@
-import UIKit
-import SwiftUI
+var helo = "hello, world";
+print(helo)
 
-print(ModelData().f12)
+var arr = [1,2,3,4,5];
+arr.sort{$0>$1}
